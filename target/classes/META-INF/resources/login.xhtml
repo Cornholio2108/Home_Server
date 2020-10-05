@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Welcome to your Home Server</title>
+</h:head>
+
+<h:body>
+	<h:form>
+
+		<p:panel header="Login"
+			style="display: block; width:50%; margin: 0 auto;">
+			<h:panelGrid columns="2" cellpadding="4"
+				style="display: block; width:50%; text_align:center;">
+				<h:outputText value="Username: " />
+				<p:inputText value="#{userController.loginUsername}" />
+
+				<h:outputText value="Password: " />
+				<p:inputText value="#{userController.loginPassword}" />
+
+				<p:commandButton value="Ok" update="greeting"
+					actionListener="#{userController.login()}">
+					<!-- 					oncomplete="PF('greetingDialog').show()"> -->
+				</p:commandButton>
+			</h:panelGrid>
+		</p:panel>
+
+		<p:dialog header="Welcome" widgetVar="greetingDialog" modal="true"
+			resizable="false">
+			<h:panelGrid id="greeting" columns="1" cellpadding="4">
+				<h:outputText value="#{userController.greeting}" />
+			</h:panelGrid>
+		</p:dialog>
+
+		<p:dialog header="Sign In" widgetVar="signInDialog" modal="true"
+			resizable="false">
+			<h:panelGrid id="greetingSignIn" columns="1" cellpadding="4">
+				<h:outputText value="#{userController.greetingSignIn}" />
+			</h:panelGrid>
+		</p:dialog>
+
+	</h:form>
+</h:body>
+</html>
