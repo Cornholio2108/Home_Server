@@ -23,4 +23,11 @@ public class UserDTOService {
 		}
 		return userDTOList;
 	}
+
+	public UserDTO createUser(UserDTO dto) {
+		User user = userAssembler.createEntity(dto);
+		user = userService.createUser(user);
+		dto = userAssembler.createDTO(user);
+		return dto;
+	}
 }
