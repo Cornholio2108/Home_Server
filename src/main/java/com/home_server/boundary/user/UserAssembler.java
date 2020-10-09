@@ -1,6 +1,8 @@
-package com.home_server.user;
+package com.home_server.boundary.user;
 
 import org.springframework.stereotype.Component;
+
+import com.home_server.domain.user.User;
 
 @Component
 public class UserAssembler {

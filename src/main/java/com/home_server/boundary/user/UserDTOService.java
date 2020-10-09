@@ -1,4 +1,4 @@
-package com.home_server.user;
+package com.home_server.boundary.user;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,9 @@ import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Component;
+
+import com.home_server.application.user.UserService;
+import com.home_server.domain.user.User;
 
 @Component
 public class UserDTOService {

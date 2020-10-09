@@ -1,4 +1,4 @@
-package com.home_server.user;
+package com.home_server.boundary.user;
 
 public class UserDTO {
 	private Long id;
