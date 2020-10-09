@@ -1,0 +1,12 @@
+com\home_server\rest\user\UserRestController.class
+com\home_server\repositories\user\UserRepositoryJPA.class
+com\home_server\rest\user\RestResponse.class
+com\home_server\repositories\user\UserRepository.class
+com\home_server\boundary\user\UserDTO.class
+com\home_server\boundary\user\UserAssembler.class
+com\home_server\boundary\user\UserDTOService.class
+com\home_server\domain\user\User.class
+com\home_server\rest\user\MyRestController.class
+com\home_server\main\MainApplication.class
+com\home_server\application\user\UserService.class
+com\home_server\domain\ui\user\UserController.class
