@@ -1,4 +1,4 @@
-package com.home_server.user;
+package com.home_server.domain.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,6 +24,15 @@ public class User {
 	private String userName;
 	@Column(name = "password")
 	private String password;
+	
+	public User() {
+		super();
+	}
+
+	public User(String userName, String password) {
+		this.userName=userName;
+		this.password=password;
+	}
 
 	public Long getId() {
 		return id;

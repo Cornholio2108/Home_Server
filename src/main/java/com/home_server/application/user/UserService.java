@@ -1,4 +1,4 @@
-package com.home_server.user;
+package com.home_server.application.user;
 
 import java.util.List;
 
@@ -6,6 +6,9 @@ import javax.enterprise.context.ApplicationScoped;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.home_server.domain.user.User;
+import com.home_server.repositories.user.UserRepository;
 
 @ApplicationScoped
 @Component

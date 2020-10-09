@@ -1,4 +1,4 @@
-package com.home_server.user;
+package com.home_server.main;
 
 import java.util.Scanner;
 

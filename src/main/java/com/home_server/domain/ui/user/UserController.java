@@ -1,4 +1,4 @@
-package com.home_server.user;
+package com.home_server.domain.ui.user;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -11,6 +11,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.primefaces.context.RequestContext;
+
+import com.home_server.boundary.user.UserDTO;
+import com.home_server.boundary.user.UserDTOService;
 
 @Named
 @ViewScoped
