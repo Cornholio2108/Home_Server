@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Welcome to your Home Server</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:panel style="display: block; width: fit-content; margin: 0 auto;">
+			<p:panelGrid styleClass="ui-noborder">
+				<p:row style="text-align:center;">
+					<p:column>
+						<p:commandButton value="Users"
+							actionListener="#{mainController.users()}">
+							<!-- 					oncomplete="PF('usersDialog').show()"> -->
+						</p:commandButton>
+					</p:column>
+					<p:column>
+						<p:commandButton value="Shopping Lists"
+							actionListener="#{mainController.shoppingLists()}">
+						</p:commandButton>
+					</p:column>
+					<p:column>
+						<p:commandButton value="Media"
+							actionListener="#{mainController.media()}">
+						</p:commandButton>
+					</p:column>
+				</p:row>
+				<p:row style="text-align:center;">
+					<p:column>
+						<p:commandButton value="Weather" />
+					</p:column>
+					<p:column>
+						<p:commandButton value="Traffic" />
+					</p:column>
+					<p:column>
+						<p:commandButton value="News" />
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

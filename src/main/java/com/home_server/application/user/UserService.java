@@ -2,26 +2,29 @@ package com.home_server.application.user;
 
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.annotation.Resource;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.home_server.domain.user.User;
 import com.home_server.repositories.user.UserRepository;
 
-@ApplicationScoped
-@Component
+@Service
+@Transactional
 public class UserService {
-	@Autowired
-	private UserRepository userRepository;
-
-	public List<User> findAllUsers() {
-		return (List<User>) userRepository.findAll();
-	}
-
-	public User createUser(User entity) {
-		entity = userRepository.save(entity);
-		return entity;
-	}
+//	@Resource
+//	private UserRepository userRepository;
+//
+//	@Transactional(readOnly = true)
+//	public List<User> findAllUsers() {
+//		return (List<User>) userRepository.findAll();
+//	}
+//
+//	@Transactional(readOnly = false)
+//	public User createUser(User entity) {
+//		entity = userRepository.save(entity);
+//		return entity;
+//	}
 }
