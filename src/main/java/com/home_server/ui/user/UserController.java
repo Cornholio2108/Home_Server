@@ -1,24 +1,22 @@
-package com.home_server.domain.ui.user;
+package com.home_server.ui.user;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-import javax.inject.Named;
+import javax.annotation.Resource;
 
-import org.primefaces.context.RequestContext;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import com.home_server.boundary.user.UserDTO;
 import com.home_server.boundary.user.UserDTOService;
 
-@Named
-@ViewScoped
+@Component
+@Scope("view")
 public class UserController implements Serializable {
-	@Inject
+	@Resource
 	private UserDTOService userDTOService;
 
 	private static final long serialVersionUID = 1L;
@@ -72,16 +70,16 @@ public class UserController implements Serializable {
 	}
 
 	public void showSuccessDialog() throws IOException {
-		RequestContext context = RequestContext.getCurrentInstance();
-		context.execute("PF('greetingDialog').show();");
-		FacesContext fcontext = FacesContext.getCurrentInstance();
-		fcontext.getExternalContext().redirect("/users.xhtml");
-		fcontext.getExternalContext().getFlash().setKeepMessages(true);
+//		RequestContext context = RequestContext.getCurrentInstance();
+//		context.execute("PF('greetingDialog').show();");
+//		FacesContext fcontext = FacesContext.getCurrentInstance();
+//		fcontext.getExternalContext().redirect("/users.xhtml");
+//		fcontext.getExternalContext().getFlash().setKeepMessages(true);
 	}
 
 	public void showSignInDialog() throws IOException {
-		RequestContext context = RequestContext.getCurrentInstance();
-		context.execute("PF('signInDialog').show();");
+//		RequestContext context = RequestContext.getCurrentInstance();
+//		context.execute("PF('signInDialog').show();");
 //		FacesContext fcontext = FacesContext.getCurrentInstance();
 //		fcontext.getExternalContext().redirect("/users.xhtml");
 //		fcontext.getExternalContext().getFlash().setKeepMessages(true);

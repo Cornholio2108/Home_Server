@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
-public class MainController {
+public class MainRestController {
 	
-	@GetMapping("/main")
+	@GetMapping("/")
 	public String redirectToMainPage(Model model) {            
-	    return "forward:/login.xhtml";
+	    return "forward:/main.xhtml";
 	} 
 }
