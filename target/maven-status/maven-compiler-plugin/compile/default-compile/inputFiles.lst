@@ -1,6 +1,7 @@
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\DataInitializer.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\rest\main\MainRestController.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\repositories\user\UserRepository.java
+C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\pi\PiGPIOControl.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\boundary\user\UserDTOService.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\ProductListController.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\boundary\user\UserDTO.java
@@ -10,6 +11,9 @@ C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\MainAppl
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\ServletInitializer.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\ProductRepository.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\rest\user\MyRestController.java
+C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\pi\WebRadioPlayer.java
+C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\pi\PiCommands.java
+C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\media\NetworkFileHandler.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\ViewScopeCallbackRegister.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\ProductController.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\AppConfig.java

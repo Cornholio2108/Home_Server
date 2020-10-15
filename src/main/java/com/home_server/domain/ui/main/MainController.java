@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class MainController implements Serializable {
 	public void users() throws IOException {
 		FacesContext fcontext = FacesContext.getCurrentInstance();
-		fcontext.getExternalContext().redirect("/users.xhtml");
+		fcontext.getExternalContext().redirect("/home/users.xhtml");
 	}
 
 	public void shoppingLists() throws IOException {
