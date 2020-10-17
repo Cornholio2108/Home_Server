@@ -1,4 +1,4 @@
-package com.home_server.domain.ui.main;
+package com.home_server.ui.main;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -18,7 +18,7 @@ public class MainController implements Serializable {
 
 	public void shoppingLists() throws IOException {
 		FacesContext fcontext = FacesContext.getCurrentInstance();
-		fcontext.getExternalContext().redirect("/shoppinglists.xhtml");
+		fcontext.getExternalContext().redirect("/home/shoppinglist.xhtml");
 	}
 
 	public void media() throws IOException {
