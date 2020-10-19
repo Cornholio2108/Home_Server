@@ -22,6 +22,12 @@ public class ShoppingListDTOService {
 		return dtoList;
 	}
 
+	public ShoppingListItemDTO getShoppingListItemByID(Long itemID) {
+		ShoppingListItem entity = shoppingListService.getShoppingListItemByID(itemID);
+		ShoppingListItemDTO dto = shoppingListItemAssembler.createDTO(entity);
+		return dto;
+	}
+
 	public ShoppingListItemDTO createShoppingListItem(ShoppingListItemDTO dto) {
 		ShoppingListItem entity = shoppingListItemAssembler.createEntity(dto);
 		entity = shoppingListService.createShoppingListItem(entity);

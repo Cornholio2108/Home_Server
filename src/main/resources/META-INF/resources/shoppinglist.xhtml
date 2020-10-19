@@ -54,22 +54,24 @@ html, body, h1, h2, h3, h4, h5 {
 		<h:form id="form" style="margin-top: 50px;">
 			<p:growl id="msgs" showDetail="true" />
 			<p:panel style="display: block; width: fit-content; margin: 0 auto;">
-				<p:dataTable var="shoppingListItem"
+				<p:dataTable id="shoppingListItemTable"
+					widgetVar="shoppingListItemTable" var="shoppingListItem"
 					value="#{shoppingListController.selectedShoppingList}"
 					editable="true" editMode="cell" selectionMode="single"
 					selection="#{shoppingListItemController.selectedShoppingListItem}"
-					rowKey="#{shoppingListItem}">
+					rowKey="#{shoppingListItem.itemID}">
 					<p:ajax event="cellEdit"
 						listener="#{shoppingListItemController.onCellEdit}"
 						update=":form:msgs" />
-					<p:ajax event="rowSelect"
-						listener="#{shoppingListItemController.onRowSelect}" />
-					<p:ajax event="rowUnselect"
-						listener="#{shoppingListItemController.onRowUnselect}" />
+					<!-- 					<p:ajax event="rowSelect" -->
+					<!-- 						listener="#{shoppingListItemController.onRowSelect}" /> -->
+					<!-- 					<p:ajax event="rowUnselect" -->
+					<!-- 						listener="#{shoppingListItemController.onRowUnselect}" /> -->
 					<p:column headerText="ID">
 						<h:outputText value="#{shoppingListItem.itemID}" />
 					</p:column>
-					<p:column headerText="Artikel">
+					<p:column headerText="Artikel" sortBy="#{shoppingListItem.title}"
+						filterBy="#{shoppingListItem.title}">
 						<p:cellEditor>
 							<f:facet name="output">
 								<h:outputText value="#{shoppingListItem.title}" />
@@ -119,18 +121,26 @@ html, body, h1, h2, h3, h4, h5 {
 					<p:column headerText="Änderungsdatum">
 						<h:outputText value="#{shoppingListItem.modificationDate}" />
 					</p:column>
-					<p:column headerText="Erledigt">
+					<p:column headerText="Erledigt"
+						sortBy="#{shoppingListItem.completed}"
+						filterBy="#{shoppingListItem.completed}">
+						<f:facet name="filter">
+							<p:selectOneMenu onchange="PF('shoppingListItemTable').filter()"
+								styleClass="custom-filter">
+								<f:selectItem itemLabel="Alle" itemValue="#{null}"
+									noSelectionOption="true" />
+								<f:selectItem itemLabel="ja" itemValue="#{true}" />
+								<f:selectItem itemLabel="nein" itemValue="#{false}" />
+							</p:selectOneMenu>
+						</f:facet>
 						<p:cellEditor>
 							<f:facet name="output">
 								<p:selectBooleanCheckbox value="#{shoppingListItem.completed}"
 									disabled="true" />
 							</f:facet>
 							<f:facet name="input">
-								<h:selectOneMenu value="#{shoppingListItem.completed}"
-									style="width:100%">
-									<f:selectItem itemLabel="ja" itemValue="#{true}" />
-									<f:selectItem itemLabel="nein" itemValue="#{false}" />
-								</h:selectOneMenu>
+								<p:selectBooleanCheckbox value="#{shoppingListItem.completed}"
+									disabled="false" />
 							</f:facet>
 						</p:cellEditor>
 					</p:column>
