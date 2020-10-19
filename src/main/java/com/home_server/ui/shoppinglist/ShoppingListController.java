@@ -32,7 +32,10 @@ public class ShoppingListController implements Serializable {
 	@PostConstruct
 	public void init() {
 		selectedShoppingList = shoppingListDTOService.getAllShoppingListItems();
-		selectedShoppingList.add(new ShoppingListItemDTO());
+//		ShoppingListItemDTO newShoppingListItem = new ShoppingListItemDTO();
+//		newShoppingListItem.setItemID(999L);
+//		newShoppingListItem.setTitle("Neu");
+//		selectedShoppingList.add(new ShoppingListItemDTO());
 	}
 
 	public List<ShoppingListItemDTO> getSelectedShoppingList() {

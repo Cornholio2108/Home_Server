@@ -26,4 +26,8 @@ public class ShoppingListService {
 		entity = shoppingListRepository.save(entity);
 		return entity;
 	}
+
+	public ShoppingListItem getShoppingListItemByID(Long itemID) {
+		return shoppingListRepository.findById(itemID).orElse(null);
+	}
 }

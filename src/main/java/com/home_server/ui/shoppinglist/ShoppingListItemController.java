@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.component.datatable.DataTable;
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
@@ -25,6 +26,8 @@ import com.home_server.boundary.user.UserDTOService;
 public class ShoppingListItemController implements Serializable {
 	@Resource
 	private ShoppingListDTOService shoppingListDTOService;
+	@Resource
+	private ShoppingListController shoppingListController;
 
 	private static final long serialVersionUID = 1L;
 
@@ -45,8 +48,10 @@ public class ShoppingListItemController implements Serializable {
 	public void onCellEdit(CellEditEvent event) {
 		Object oldValue = event.getOldValue();
 		Object newValue = event.getNewValue();
+		int rowIndex = event.getRowIndex();
+		selectedShoppingListItem = shoppingListController.getSelectedShoppingList().get(rowIndex);
 
-		shoppingListDTOService.createShoppingListItem(selectedShoppingListItem);
+		selectedShoppingListItem = shoppingListDTOService.createShoppingListItem(selectedShoppingListItem);
 
 		if (newValue != null && !newValue.equals(oldValue)) {
 			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Wert geändert",

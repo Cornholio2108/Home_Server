@@ -11,18 +11,8 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope("view")
 public class MainController implements Serializable {
-	public void users() throws IOException {
+	public void test() throws IOException {
 		FacesContext fcontext = FacesContext.getCurrentInstance();
 		fcontext.getExternalContext().redirect("/home/users.xhtml");
-	}
-
-	public void shoppingLists() throws IOException {
-		FacesContext fcontext = FacesContext.getCurrentInstance();
-		fcontext.getExternalContext().redirect("/home/shoppinglist.xhtml");
-	}
-
-	public void media() throws IOException {
-		FacesContext fcontext = FacesContext.getCurrentInstance();
-		fcontext.getExternalContext().redirect("/media.xhtml");
 	}
 }

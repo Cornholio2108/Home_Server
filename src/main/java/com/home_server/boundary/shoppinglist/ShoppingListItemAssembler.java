@@ -20,6 +20,7 @@ public class ShoppingListItemAssembler extends BaseAssembler<ShoppingListItem, S
 		dto.setShop(entity.getShop());
 		dto.setCreationDate(entity.getCreationDate());
 		dto.setModificationDate(entity.getModificationDate());
+		dto.setCompleted(entity.isCompleted());
 		return dto;
 	}
 
@@ -35,6 +36,7 @@ public class ShoppingListItemAssembler extends BaseAssembler<ShoppingListItem, S
 		entity.setShop(dto.getShop());
 		entity.setCreationDate(dto.getCreationDate());
 		entity.setModificationDate(dto.getModificationDate());
+		entity.setCompleted(dto.isCompleted());
 		return entity;
 	}
 }
