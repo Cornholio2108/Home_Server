@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,7 +18,6 @@ public class ShoppingListService {
 	@Resource
 	private ShoppingListRepository shoppingListRepository;
 
-	@Transactional(readOnly = true)
 	public List<ShoppingListItem> getAllShoppingListItems() {
 		return (List<ShoppingListItem>) shoppingListRepository.findAll();
 	}
