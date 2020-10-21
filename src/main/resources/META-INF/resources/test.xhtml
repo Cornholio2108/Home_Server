@@ -17,7 +17,7 @@
 				content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 			<meta name="apple-mobile-web-app-capable" content="yes" />
 		</f:facet>
-		<title><ui:insert name="title">Willkommen zu #{msg['application.title']}</ui:insert></title>
+		<title><ui:insert name="title">Test</ui:insert></title>
 
 		<!-- *Note: favicon generated and setup instruction taken from https://favicon.io/favicon-generator/ -->
 		<link rel="apple-touch-icon" sizes="180x180"
@@ -49,53 +49,15 @@ html, body, h1, h2, h3, h4, h5 {
 
 	<h:body class="w3-theme-light" style="margin:0px;">
 		<h1 style="text-align: center;">
-			<ui:insert name="title">Willkommen zu #{msg['application.title']}</ui:insert>
+			<ui:insert name="title">Test</ui:insert>
 		</h1>
-		<h:form style="margin-top: 50px;">
+		<h:form id="form" style="margin-top: 50px;">
+			<p:growl id="msgs" showDetail="true" />
 			<p:panel style="display: block; width: fit-content; margin: 0 auto;">
-				<p:panelGrid styleClass="ui-noborder">
-					<p:row style="text-align:center;">
-						<p:column>
-							<p:button value="#{msg['main.shoppinglists']}"
-								icon="fa fa-shopping-cart" outcome="/shoppinglist.xhtml" />
-						</p:column>
-						<p:column>
-							<p:button value="#{msg['main.media']}" icon="fa fa-music"
-								outcome="/media.xhtml" />
-						</p:column>
-						<p:column>
-							<p:button value="#{msg['main.calendar']}" icon="fa fa-calendar"
-								outcome="/calendar.xhtml" />
-						</p:column>
-					</p:row>
-					<p:row style="text-align:center;">
-						<p:column>
-							<p:button value="#{msg['main.weather']}" icon="fa fa-cloud"
-								outcome="/weather.xhtml" />
-						</p:column>
-						<p:column>
-							<p:button value="#{msg['main.traffic']}" icon="fa fa-automobile"
-								outcome="/traffic.xhtml" />
-						</p:column>
-						<p:column>
-							<p:button value="#{msg['main.news']}" icon="fa fa-newspaper-o"
-								outcome="/traffic.xhtml" />
-						</p:column>
-					</p:row>
-					<p:row style="text-align:center;">
-						<p:column>
-							<p:button value="#{msg['main.pi_controls']}" icon="fa fa-gears"
-								outcome="/picontrols.xhtml" />
-						</p:column>
-						<p:column>
-							<p:button value="#{msg['main.settings']}" icon="fa fa-gears"
-								outcome="/settings.xhtml" />
-						</p:column>
-						<p:column>
-							<p:button value="Test" icon="fa fa-gears" outcome="/test.xhtml" />
-						</p:column>
-					</p:row>
-				</p:panelGrid>
+				<p:commandButton value="Test" icon="fa fa-gears"
+					actionListener="#{testController.test()}">
+					<!-- 					oncomplete="PF('usersDialog').show()"> -->
+				</p:commandButton>
 			</p:panel>
 		</h:form>
 	</h:body>

@@ -5,21 +5,29 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class NetworkFileHandler {
-	static {
-		Set<String> fileList = new HashSet<>();
-		try (DirectoryStream<Path> stream = Files
-				.newDirectoryStream(Paths.get("\\\\SYNOSTATION\\photo\\2018_03_Südafrika\\Südafrika\\"))) {
+	public List<NASFile> loadFiles(String folders) {
+		List<NASFile> fileList = new ArrayList();
+		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get("\\\\SYNOSTATION\\photo\\"+folders))) {
 			for (Path path : stream) {
-				if (!Files.isDirectory(path)) {
-					fileList.add(path.getFileName().toString());
-				}
+//				if (!Files.isDirectory(path)) {
+//					fileList.add(path.getFileName().toString());
+//				}
+				NASFile nasFile = new NASFile();
+				nasFile.setFileName(path.getFileName().toString());
+				nasFile.setPath(path.toString());
+				nasFile.setFolder(Files.isDirectory(path));
+				fileList.add(nasFile);
 			}
+			return fileList;
 		} catch (IOException e) {
 			e.printStackTrace();
+			return null;
 		}
 	}
 }
