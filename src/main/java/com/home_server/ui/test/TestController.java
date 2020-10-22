@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.home_server.boundary.shoppinglist.ShoppingListItemDTO;
+import com.home_server.domain.weather.WeatherHandler;
 import com.home_server.media.NASFile;
 import com.home_server.media.NetworkFileHandler;
 
@@ -24,6 +25,8 @@ public class TestController implements Serializable {
 	NetworkFileHandler networkFileHandler = new NetworkFileHandler();
 	List<NASFile> fileList = new ArrayList<NASFile>();
 	NASFile selectedFile = new NASFile();
+	private String testString = "";
+	private String city = "Aschaffenburg", country = "Germany";
 
 	@PostConstruct
 	public void init() {
@@ -34,11 +37,12 @@ public class TestController implements Serializable {
 	public void test() throws IOException {
 //		FacesContext fcontext = FacesContext.getCurrentInstance();
 //		fcontext.getExternalContext().redirect("/home/users.xhtml");
-		fileList = networkFileHandler.loadFiles("");
+//		fileList = networkFileHandler.loadFiles("");
+		testString = new WeatherHandler().getWeatherDataForCity(city, country).toString();
 	}
 
 	public void onRowSelect(SelectEvent<NASFile> event) {
-		fileList = networkFileHandler.loadFiles(selectedFile.getFileName()+"\\");
+		fileList = networkFileHandler.loadFiles(selectedFile.getFileName() + "\\");
 	}
 
 	public List<NASFile> getFileList() {
@@ -56,4 +60,29 @@ public class TestController implements Serializable {
 	public void setSelectedFile(NASFile selectedFile) {
 		this.selectedFile = selectedFile;
 	}
+
+	public String getTestString() {
+		return testString;
+	}
+
+	public void setTestString(String testString) {
+		this.testString = testString;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	
 }
