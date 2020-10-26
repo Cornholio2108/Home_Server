@@ -11,9 +11,11 @@ import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.SelectEvent;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.home_server.SettingsConfig;
 import com.home_server.boundary.shoppinglist.ShoppingListItemDTO;
 import com.home_server.domain.weather.WeatherHandler;
 import com.home_server.media.NASFile;
@@ -34,11 +36,26 @@ public class TestController implements Serializable {
 		fileList = (List<NASFile>) networkFileHandler.loadFiles("");
 	}
 
+	private SettingsConfig app;
+
+	@Autowired
+	public void setApp(SettingsConfig app) {
+		this.app = app;
+	}
+
 	public void test() throws IOException {
 //		FacesContext fcontext = FacesContext.getCurrentInstance();
 //		fcontext.getExternalContext().redirect("/home/users.xhtml");
 //		fileList = networkFileHandler.loadFiles("");
-		testString = new WeatherHandler().getWeatherDataForCity(city, country).toString();
+
+//		testString = new WeatherHandler().getWeatherDataForCity(city, country).toString();
+
+		System.out.println(app.getWeatherCity());
+
+		app.setWeatherCity("Frankfurt");
+
+		testString = app.getWeatherCity();
+		System.out.println(app.getWeatherCity());
 	}
 
 	public void onRowSelect(SelectEvent<NASFile> event) {
@@ -84,5 +101,5 @@ public class TestController implements Serializable {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	
+
 }

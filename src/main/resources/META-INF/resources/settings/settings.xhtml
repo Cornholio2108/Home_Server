@@ -54,7 +54,17 @@ html, body, h1, h2, h3, h4, h5 {
 		<h:form id="form" style="margin-top: 50px;">
 			<p:growl id="msgs" showDetail="true" />
 			<p:panel style="display: block; width: fit-content; margin: 0 auto;">
-
+			<p:outputLabel value="Wetter Einstellungen:" />
+				<p:panelGrid>
+					<p:row>
+						<p:column>
+							<p:inputText value="#{testController.city}" />
+						</p:column>
+						<p:column>
+							<p:inputText value="#{testController.country}" />
+						</p:column>
+					</p:row>
+				</p:panelGrid>
 			</p:panel>
 		</h:form>
 	</h:body>
