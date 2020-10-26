@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.SelectEvent;
@@ -15,8 +16,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.home_server.Globals;
 import com.home_server.SettingsConfig;
+import com.home_server.application.settings.SettingsService;
+import com.home_server.boundary.shoppinglist.ShoppingListDTOService;
 import com.home_server.boundary.shoppinglist.ShoppingListItemDTO;
+import com.home_server.domain.settings.AppSettings;
+import com.home_server.domain.settings.WeatherSettings;
 import com.home_server.domain.weather.WeatherHandler;
 import com.home_server.media.NASFile;
 import com.home_server.media.NetworkFileHandler;
@@ -34,6 +40,8 @@ public class TestController implements Serializable {
 	public void init() {
 		networkFileHandler = new NetworkFileHandler();
 		fileList = (List<NASFile>) networkFileHandler.loadFiles("");
+		city = Globals.appSettings.getWeatherSettings().getCity();
+		country = Globals.appSettings.getWeatherSettings().getCountry();
 	}
 
 	private SettingsConfig app;
@@ -43,6 +51,9 @@ public class TestController implements Serializable {
 		this.app = app;
 	}
 
+	@Resource
+	private SettingsService settingsService;
+
 	public void test() throws IOException {
 //		FacesContext fcontext = FacesContext.getCurrentInstance();
 //		fcontext.getExternalContext().redirect("/home/users.xhtml");
@@ -50,12 +61,18 @@ public class TestController implements Serializable {
 
 //		testString = new WeatherHandler().getWeatherDataForCity(city, country).toString();
 
-		System.out.println(app.getWeatherCity());
+//		app.setWeatherCity("Frankfurt");
+//		testString = app.getWeatherCity();
 
-		app.setWeatherCity("Frankfurt");
+		System.out.println(Globals.appSettings.getWeatherSettings().getCity() + " "
+				+ Globals.appSettings.getWeatherSettings().getCountry());
 
-		testString = app.getWeatherCity();
-		System.out.println(app.getWeatherCity());
+		Globals.appSettings.getWeatherSettings().setCity(city);
+		Globals.appSettings.getWeatherSettings().setCountry(country);
+		Globals.appSettings = settingsService.saveSettings(Globals.appSettings);
+
+		System.out.println(Globals.appSettings.getWeatherSettings().getCity() + " "
+				+ Globals.appSettings.getWeatherSettings().getCountry());
 	}
 
 	public void onRowSelect(SelectEvent<NASFile> event) {
