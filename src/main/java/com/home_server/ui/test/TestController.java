@@ -64,14 +64,16 @@ public class TestController implements Serializable {
 //		app.setWeatherCity("Frankfurt");
 //		testString = app.getWeatherCity();
 
-		System.out.println(Globals.appSettings.getWeatherSettings().getCity() + " "
+		System.out.println("onClick: " + Globals.appSettings.getWeatherSettings().getCity() + " "
 				+ Globals.appSettings.getWeatherSettings().getCountry());
 
 		Globals.appSettings.getWeatherSettings().setCity(city);
 		Globals.appSettings.getWeatherSettings().setCountry(country);
 		Globals.appSettings = settingsService.saveSettings(Globals.appSettings);
 
-		System.out.println(Globals.appSettings.getWeatherSettings().getCity() + " "
+		testString = new WeatherHandler().getWeatherDataForCity(Globals.appSettings.getWeatherSettings().getCity(), Globals.appSettings.getWeatherSettings().getCountry()).toString();
+		
+		System.out.println("onComplete: " + Globals.appSettings.getWeatherSettings().getCity() + " "
 				+ Globals.appSettings.getWeatherSettings().getCountry());
 	}
 
