@@ -51,16 +51,16 @@ html, body, h1, h2, h3, h4, h5 {
 		<h1 style="text-align: center;">
 			<ui:insert name="title">Test</ui:insert>
 		</h1>
-		<h:form id="form" style="margin-top: 50px;">
+		<h:form id="form_test" style="margin-top: 50px;">
 			<p:growl id="msgs" showDetail="true" />
 			<p:panel style="display: block; width: fit-content; margin: 0 auto;">
 				<p:panelGrid>
 					<p:row>
 						<p:column>
-							<p:inputText value="#{testController.city}" />
+							<p:inputText value="#{testController.city}" id="test_city"/>
 						</p:column>
 						<p:column>
-							<p:inputText value="#{testController.country}" />
+							<p:inputText value="#{testController.country}" id="test_country" />
 						</p:column>
 					</p:row>
 				</p:panelGrid>
@@ -68,7 +68,7 @@ html, body, h1, h2, h3, h4, h5 {
 			<p:panel style="display: block; width: fit-content; margin: 0 auto;">
 				<p:commandButton value="Test" icon="fa fa-gears"
 					actionListener="#{testController.test()}"
-					update="@widgetVar(testOutputPanel)">
+					update="@widgetVar(testOutputPanel)" id="test_button">
 					<!-- 					oncomplete="PF('usersDialog').show()"> -->
 				</p:commandButton>
 			</p:panel>
