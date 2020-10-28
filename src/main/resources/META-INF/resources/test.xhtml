@@ -57,7 +57,7 @@ html, body, h1, h2, h3, h4, h5 {
 				<p:panelGrid>
 					<p:row>
 						<p:column>
-							<p:inputText value="#{testController.city}" id="test_city"/>
+							<p:inputText value="#{testController.city}" id="test_city" />
 						</p:column>
 						<p:column>
 							<p:inputText value="#{testController.country}" id="test_country" />
@@ -68,13 +68,19 @@ html, body, h1, h2, h3, h4, h5 {
 			<p:panel style="display: block; width: fit-content; margin: 0 auto;">
 				<p:commandButton value="Test" icon="fa fa-gears"
 					actionListener="#{testController.test()}"
-					update="@widgetVar(testOutputPanel)" id="test_button">
+					update="@widgetVar(testOutputPanel) @widgetVar(imagePanel)" id="test_button">
 					<!-- 					oncomplete="PF('usersDialog').show()"> -->
 				</p:commandButton>
 			</p:panel>
 			<p:panel id="testOutputPanel" widgetVar="testOutputPanel"
 				style="display: block; width: fit-content; margin: 0 auto;">
 				<p:outputLabel value="#{testController.testString}" />
+			</p:panel>
+			<p:panel id="imagePanel" widgetVar="imagePanel"
+				style="display: block; width: fit-content; margin: 0 auto;">
+				<p:graphicImage
+					url="https://openweathermap.org/img/w/#{testController.image}"
+					alt="Bild #{testController.image}" title="#{testController.image}" />
 			</p:panel>
 		</h:form>
 	</h:body>

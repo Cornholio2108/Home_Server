@@ -54,17 +54,36 @@ html, body, h1, h2, h3, h4, h5 {
 		<h:form id="form" style="margin-top: 50px;">
 			<p:growl id="msgs" showDetail="true" />
 			<p:panel style="display: block; width: fit-content; margin: 0 auto;">
-			<p:outputLabel value="Wetter Einstellungen:" />
+				<p:outputLabel value="Wetter Einstellungen:" />
 				<p:panelGrid>
+					<!-- 					<p:row> -->
+					<!-- 						<p:column> -->
+					<!-- 							<p:inputText value="#{settingsController.city}" id="test_city" /> -->
+					<!-- 						</p:column> -->
+					<!-- 						<p:column> -->
+					<!-- 							<p:inputText value="#{settingsController.country}" id="test_country" /> -->
+					<!-- 						</p:column> -->
+					<!-- 					</p:row> -->
+
 					<p:row>
 						<p:column>
-							<p:inputText value="#{testController.city}" />
+							<p:inputText
+								value="#{settingsController.appSettings.weatherSettings.city}"
+								id="test_city" />
 						</p:column>
 						<p:column>
-							<p:inputText value="#{testController.country}" />
+							<p:inputText
+								value="#{settingsController.appSettings.weatherSettings.country}"
+								id="test_country" />
 						</p:column>
 					</p:row>
 				</p:panelGrid>
+			</p:panel>
+			<p:panel style="display: block; width: fit-content; margin: 0 auto;">
+				<p:commandButton value="Speichern"
+					actionListener="#{settingsController.save()}" id="save_button">
+					<!-- 					oncomplete="PF('usersDialog').show()"> -->
+				</p:commandButton>
 			</p:panel>
 		</h:form>
 	</h:body>
