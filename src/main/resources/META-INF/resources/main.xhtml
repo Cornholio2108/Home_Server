@@ -45,14 +45,37 @@ html, body, h1, h2, h3, h4, h5 {
 	font-family: "Open Sans", sans-serif
 }
 </style>
+<style type="text/css">
+    .ui-analog-clock {
+        width: 200px;
+    }
+</style>  
 	</h:head>
 
 	<h:body class="w3-theme-light" style="margin:0px;">
 		<h1 style="text-align: center;">
 			<ui:insert name="title">Willkommen zu #{msg['application.title']}</ui:insert>
 		</h1>
+		
 		<h:form style="margin-top: 50px;">
-			<p:panel style="display: block; width: fit-content; margin: 0 auto;">
+		<p:panel id="clockPanel" widgetVar="clockPanel"
+				style="display: block; width: fit-content; margin: 0 auto; margin-top: 50px;">
+				<p:clock displayMode="analog"/>
+			</p:panel>
+			<p:panel id="imagePanel" widgetVar="imagePanel"
+				style="display: block; width: fit-content; margin: 0 auto;"
+				rendered="#{not empty weatherController.image}">
+				<p:graphicImage
+					url="https://openweathermap.org/img/w/#{weatherController.image}"
+					alt="Bild #{weatherController.image}"
+					title="#{weatherController.image}" />
+			</p:panel>
+			<p:panel id="testOutputPanel" widgetVar="testOutputPanel"
+				style="display: block; width: fit-content; margin: 0 auto;">
+				<p:outputLabel value="#{weatherController.weatherOutput}" />
+			</p:panel>
+			<p:panel
+				style="display: block; width: fit-content; margin: 0 auto; margin-top: 50px;">
 				<p:panelGrid styleClass="ui-noborder">
 					<p:row style="text-align:center;">
 						<p:column>

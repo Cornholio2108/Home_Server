@@ -1,5 +1,8 @@
 package com.home_server;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import com.home_server.domain.settings.AppSettings;
 
 public final class Globals {

@@ -22,6 +22,11 @@ public class AppSettings extends BaseEntity {
 	@Embedded
 	private WeatherSettings weatherSettings;
 
+	public AppSettings() {
+		super();
+		weatherSettings=new WeatherSettings();
+	}
+
 	@Override
 	public Long getId() {
 		return settingsID;
@@ -43,4 +48,11 @@ public class AppSettings extends BaseEntity {
 		this.weatherSettings = weatherSettings;
 	}
 
+	@Override
+	  public String toString() {
+	    return "ID: "+settingsID+System.lineSeparator()+
+	    		"weather city: "+weatherSettings.getCity()+System.lineSeparator()+
+	    		"weather country: "+weatherSettings.getCountry()+System.lineSeparator()
+	    		;
+	  }
 }
