@@ -8,119 +8,77 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-
 	<h:head>
-		<f:facet name="first">
-			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-			<meta name="viewport"
-				content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-			<meta name="apple-mobile-web-app-capable" content="yes" />
-		</f:facet>
 		<title><ui:insert name="title">Willkommen zu #{msg['application.title']}</ui:insert></title>
+		<style type="text/css">
+.ui-analog-clock {
+	width: 150px;
+	margin: auto;
+}
 
-		<!-- *Note: favicon generated and setup instruction taken from https://favicon.io/favicon-generator/ -->
-		<link rel="apple-touch-icon" sizes="180x180"
-			href="#{request.contextPath}/favicon_io/apple-touch-icon.png" />
-		<link rel="icon" type="image/png" sizes="32x32"
-			href="#{request.contextPath}/favicon_io/favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="16x16"
-			href="#{request.contextPath}/favicon_io/favicon-16x16.png" />
-		<link rel="manifest"
-			href="#{request.contextPath}/favicon_io/site.webmanifest" />
-
-		<h:outputStylesheet library="css" name="w3.css" />
-
-		<!-- 
-        	color themes, read from cookie name 'theme-color', if empty, set to default value 'w3-theme-light-blue' 
-        -->
-		<c:set var="theme_color" value="#{cookie['theme.color'].value}" />
-		<c:if test="#{empty theme_color}">
-			<c:set var="theme_color" value="w3-theme-light-blue" />
-		</c:if>
-		<h:outputStylesheet library="css" name="w3-theme/#{theme_color}.css" />
-
-		<style>
-html, body, h1, h2, h3, h4, h5 {
-	font-family: "Open Sans", sans-serif
+.marginauto {
+	margin: 10px auto 20px;
+	display: block;
 }
 </style>
-<style type="text/css">
-    .ui-analog-clock {
-        width: 200px;
-    }
-</style>  
 	</h:head>
+	<h:body style="margin:0px;">
+		<!-- 		<h1 style="text-align: center;"> -->
+		<!-- 			<ui:insert name="title">Willkommen zu #{msg['application.title']}</ui:insert> -->
+		<!-- 		</h1> -->
+		<h:form style="margin-top: 25px;">
+			<p:clock displayMode="analog" />
+			<p:graphicImage class="marginauto" style="margin-top: 50px;"
+				url="https://openweathermap.org/img/w/#{weatherController.image}"
+				alt="Bild #{weatherController.image}"
+				title="#{weatherController.image}"
+				rendered="#{not empty weatherController.image}" />
+			<p:outputLabel value="#{weatherController.weatherOutput}"
+				style="display: block; width:100%; text-align:center;" />
+			<p:panelGrid styleClass="ui-noborder"
+				style=" width: fit-content; margin: 0 auto; margin-top: 50px;">
+				<p:row style="text-align:center;">
+					<p:column>
+						<p:button value="#{msg['main.shoppinglists']}"
+							icon="fa fa-shopping-cart"
+							outcome="shoppinglist/shoppinglist.xhtml" />
+					</p:column>
+					<p:column>
+						<p:button value="#{msg['main.media']}" icon="fa fa-music"
+							outcome="media/media.xhtml" />
+					</p:column>
+					<p:column>
+						<p:button value="#{msg['main.calendar']}" icon="fa fa-calendar"
+							outcome="info/calendar.xhtml" />
+					</p:column>
+				</p:row>
+				<p:row style="text-align:center;">
+					<p:column>
+						<p:button value="#{msg['main.news']}" icon="fa fa-newspaper-o"
+							outcome="info/news.xhtml" />
+					</p:column>
+					<p:column>
+						<p:button value="SmartHome" icon="fa fa-gears"
+							outcome="settings/picontrols.xhtml" />
+					</p:column>
+					<p:column>
+						<p:button value="#{msg['main.pi_controls']}" icon="fa fa-gears"
+							outcome="settings/picontrols.xhtml" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+					</p:column>
+					<p:column style="text-align: center; padding-top: 75px;">
+						<p:button icon="fa fa-gears" outcome="settings/settings.xhtml" />
+					</p:column>
+					<p:column rendered="false"
+						style="text-align: center; padding-top: 75px;">
+						<p:button value="Test" icon="fa fa-gears" outcome="/test.xhtml" />
+					</p:column>
+				</p:row>
+			</p:panelGrid>
 
-	<h:body class="w3-theme-light" style="margin:0px;">
-		<h1 style="text-align: center;">
-			<ui:insert name="title">Willkommen zu #{msg['application.title']}</ui:insert>
-		</h1>
-		
-		<h:form style="margin-top: 50px;">
-		<p:panel id="clockPanel" widgetVar="clockPanel"
-				style="display: block; width: fit-content; margin: 0 auto; margin-top: 50px;">
-				<p:clock displayMode="analog"/>
-			</p:panel>
-			<p:panel id="imagePanel" widgetVar="imagePanel"
-				style="display: block; width: fit-content; margin: 0 auto;"
-				rendered="#{not empty weatherController.image}">
-				<p:graphicImage
-					url="https://openweathermap.org/img/w/#{weatherController.image}"
-					alt="Bild #{weatherController.image}"
-					title="#{weatherController.image}" />
-			</p:panel>
-			<p:panel id="testOutputPanel" widgetVar="testOutputPanel"
-				style="display: block; width: fit-content; margin: 0 auto;">
-				<p:outputLabel value="#{weatherController.weatherOutput}" />
-			</p:panel>
-			<p:panel
-				style="display: block; width: fit-content; margin: 0 auto; margin-top: 50px;">
-				<p:panelGrid styleClass="ui-noborder">
-					<p:row style="text-align:center;">
-						<p:column>
-							<p:button value="#{msg['main.shoppinglists']}"
-								icon="fa fa-shopping-cart"
-								outcome="shoppinglist/shoppinglist.xhtml" />
-						</p:column>
-						<p:column>
-							<p:button value="#{msg['main.media']}" icon="fa fa-music"
-								outcome="media/media.xhtml" />
-						</p:column>
-						<p:column>
-							<p:button value="#{msg['main.calendar']}" icon="fa fa-calendar"
-								outcome="info/calendar.xhtml" />
-						</p:column>
-					</p:row>
-					<p:row style="text-align:center;">
-						<p:column>
-							<p:button value="#{msg['main.weather']}" icon="fa fa-cloud"
-								outcome="info/weather.xhtml" />
-						</p:column>
-						<p:column>
-							<p:button value="#{msg['main.traffic']}" icon="fa fa-automobile"
-								outcome="info/traffic.xhtml" />
-						</p:column>
-						<p:column>
-							<p:button value="#{msg['main.news']}" icon="fa fa-newspaper-o"
-								outcome="info/news.xhtml" />
-						</p:column>
-					</p:row>
-					<p:row style="text-align:center;">
-						<p:column>
-							<p:button value="#{msg['main.pi_controls']}" icon="fa fa-gears"
-								outcome="settings/picontrols.xhtml" />
-						</p:column>
-						<p:column>
-							<p:button value="#{msg['main.settings']}" icon="fa fa-gears"
-								outcome="settings/settings.xhtml" />
-						</p:column>
-						<p:column>
-							<p:button value="Test" icon="fa fa-gears" outcome="/test.xhtml" />
-						</p:column>
-					</p:row>
-				</p:panelGrid>
-			</p:panel>
 		</h:form>
 	</h:body>
 </ui:composition>

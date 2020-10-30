@@ -27,6 +27,7 @@ C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\rest\use
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\WebConfig.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\Product.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\domain\user\User.java
+C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\ui\settings\SettingsController.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\repositories\user\UserRepository.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\ui\test\TestController.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\boundary\user\UserDTOService.java

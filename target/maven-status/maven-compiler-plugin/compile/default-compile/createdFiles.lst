@@ -14,6 +14,7 @@ com\home_server\domain\settings\AppSettings.class
 com\home_server\domain\weather\WeatherHandler.class
 com\home_server\pi\WebRadioPlayer.class
 com\home_server\media\NetworkFileHandler.class
+com\home_server\ui\settings\SettingsController.class
 com\home_server\ui\shoppinglist\ShoppingListController.class
 com\home_server\ProductListController.class
 com\home_server\ui\main\MainController.class

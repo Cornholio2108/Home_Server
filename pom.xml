@@ -8,14 +8,14 @@
 	<artifactId>my-home-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>my-home-server</name>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<description>Home-server project with Spring Boot, JPA, MySQL, JSF, Primefaces</description>
 
 	<!-- Inherit defaults from Spring Boot -->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.2.RELEASE</version>
+		<version>2.3.4.RELEASE</version>
 	</parent>
 
 	<properties>
