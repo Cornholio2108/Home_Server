@@ -53,9 +53,8 @@ html, body, h1, h2, h3, h4, h5 {
 		</h1>
 		<h:form id="form" style="margin-top: 50px;">
 			<p:growl id="msgs" showDetail="true" />
-			<p:panel style="display: block; width: fit-content; margin: 0 auto;">
-
-			</p:panel>
+			<p:calendar id="inline" value="#{calendarController.selectedDate}"
+				mode="inline" />
 		</h:form>
 	</h:body>
 </ui:composition>
