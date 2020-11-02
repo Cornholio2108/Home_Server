@@ -19,7 +19,8 @@ import com.home_server.media.NetworkFileHandler;
 @Component
 @Scope("view")
 public class WeatherController implements Serializable {
-	private String weatherOutput = "", image = "";
+	private String weatherOutput = "", weatherOutput2h = "", weatherOutput4h = "", image = "", image2h = "",
+			image4h = "";
 	private String city = "Aschaffenburg", country = "Germany";
 
 	@PostConstruct
@@ -35,12 +36,23 @@ public class WeatherController implements Serializable {
 				Globals.appSettings.getWeatherSettings().getCountry());
 
 		if (weatherData.list.size() > 0) {
-			weatherOutput = weatherData.list.get(0).main.temp + "°C " + weatherData.list.get(0).weather.get(0).description;
-			image=weatherData.list.get(0).weather.get(0).icon+".png";
+			weatherOutput = weatherData.list.get(0).main.temp + "°C "
+					+ weatherData.list.get(0).weather.get(0).description;
+			image = weatherData.list.get(0).weather.get(0).icon + ".png";
 			// "https://openweathermap.org/img/w/" + image+".png"
 		}
-		
-		PrimeFaces.current().ajax().update("@widgetVar(imagePanel)");
+		if (weatherData.list.size() > 2) {
+			weatherOutput2h = weatherData.list.get(2).main.temp + "°C "
+					+ weatherData.list.get(2).weather.get(0).description;
+			image2h = weatherData.list.get(2).weather.get(0).icon + ".png";
+		}
+		if (weatherData.list.size() > 4) {
+			weatherOutput4h = weatherData.list.get(2).main.temp + "°C "
+					+ weatherData.list.get(4).weather.get(0).description;
+			image4h = weatherData.list.get(4).weather.get(0).icon + ".png";
+		}
+
+		PrimeFaces.current().ajax().update("mainForm:weatherPanel");
 	}
 
 	public String getCity() {
@@ -73,5 +85,37 @@ public class WeatherController implements Serializable {
 
 	public void setWeatherOutput(String weatherOutput) {
 		this.weatherOutput = weatherOutput;
+	}
+
+	public String getWeatherOutput2h() {
+		return weatherOutput2h;
+	}
+
+	public void setWeatherOutput2h(String weatherOutput2h) {
+		this.weatherOutput2h = weatherOutput2h;
+	}
+
+	public String getWeatherOutput4h() {
+		return weatherOutput4h;
+	}
+
+	public void setWeatherOutput4h(String weatherOutput4h) {
+		this.weatherOutput4h = weatherOutput4h;
+	}
+
+	public String getImage2h() {
+		return image2h;
+	}
+
+	public void setImage2h(String image2h) {
+		this.image2h = image2h;
+	}
+
+	public String getImage4h() {
+		return image4h;
+	}
+
+	public void setImage4h(String image4h) {
+		this.image4h = image4h;
 	}
 }

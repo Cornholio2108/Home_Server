@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.home_server.domain.settings.AppSettings;
 
-@Repository
+@Repository(value = "MySettingsRepository")
 public interface SettingsRepository extends CrudRepository<AppSettings, Long> {
 
 }

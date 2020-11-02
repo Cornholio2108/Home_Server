@@ -14,10 +14,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.home_server.Globals;
-import com.home_server.SettingsConfig;
 import com.home_server.application.settings.SettingsService;
-import com.home_server.domain.weather.WeatherData;
-import com.home_server.domain.weather.WeatherHandler;
 import com.home_server.media.NASFile;
 import com.home_server.media.NetworkFileHandler;
 
@@ -32,13 +29,6 @@ public class TestController implements Serializable {
 	public void init() {
 		networkFileHandler = new NetworkFileHandler();
 		fileList = (List<NASFile>) networkFileHandler.loadFiles("");
-	}
-
-	private SettingsConfig app;
-
-	@Autowired
-	public void setApp(SettingsConfig app) {
-		this.app = app;
 	}
 
 	@Resource

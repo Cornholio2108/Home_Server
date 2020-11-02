@@ -1,15 +1,12 @@
 package com.home_server.ui.shoppinglist;
 
-import java.io.IOException;
 import java.io.Serializable;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
-import org.primefaces.component.datatable.DataTable;
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
@@ -18,8 +15,6 @@ import org.springframework.stereotype.Component;
 
 import com.home_server.boundary.shoppinglist.ShoppingListDTOService;
 import com.home_server.boundary.shoppinglist.ShoppingListItemDTO;
-import com.home_server.boundary.user.UserDTO;
-import com.home_server.boundary.user.UserDTOService;
 
 @Component
 @Scope("view")
