@@ -5,8 +5,9 @@ import java.io.InputStreamReader;
 
 public class PiCommands {
 	public Thread cmdThread;
-	public String[] rebootCMD = { "sudo", "reboot", "now" };
-	public String[] shellCMDwithArgs = { "nohup", "/home/pi/picam/run_picam.sh", "start" };
+	public static String[] rebootCMD = { "sudo", "reboot", "now" };
+	public static String[] shutdownCMD = { "sudo", "shutdown", "-h", "now" };
+	public static String[] shellCMDwithArgs = { "nohup", "/home/pi/picam/run_picam.sh", "start" };
 
 	public void runCommandThread(String[] urlStr) {
 		cmdThread = new Thread() {

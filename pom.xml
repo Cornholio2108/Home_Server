@@ -6,9 +6,9 @@
 
 	<groupId>com.home_server</groupId>
 	<artifactId>my-home-server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>my-home-server</name>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<description>Home-server project with Spring Boot, JPA, MySQL, JSF, Primefaces</description>
 
 	<!-- Inherit defaults from Spring Boot -->
@@ -178,25 +178,21 @@
 			<artifactId>org.eclipse.persistence.jpa</artifactId>
 			<version>${eclipselink.version}</version>
 		</dependency>
-
-		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-security</artifactId> 
-			</dependency> -->
-
 		<!-- Spring Security Dependencies -->
-		<!-- <dependency> -->
-		<!-- for security namespace (config) parsing code -->
-		<!-- <groupId>org.springframework.security</groupId> -->
-		<!-- <artifactId>spring-security-config</artifactId> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- for URL based access control and web authentication services -->
-		<!-- <groupId>org.springframework.security</groupId> -->
-		<!-- <artifactId>spring-security-web</artifactId> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.springframework.security</groupId> -->
-		<!-- <artifactId>spring-security-taglibs</artifactId> -->
-		<!-- </dependency> -->
+		<dependency>
+			<!-- for security namespace (config) parsing code -->
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+		</dependency>
+		<dependency>
+			<!-- for URL based access control and web authentication services -->
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+		</dependency>
 
 		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-web</artifactId> 
 			</dependency> -->
@@ -230,11 +226,6 @@
 			<version>1.2</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<scope>test</scope>
@@ -256,6 +247,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>home</finalName>
 	</build>
 
 </project>

@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.UrlResource;
 
-@Configuration
+@Configuration(value = "MyAppConfig")
 public class AppConfig {
 	private static final Logger logger = LoggerFactory.getLogger(AppConfig.class);
 

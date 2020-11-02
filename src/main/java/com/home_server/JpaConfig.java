@@ -23,7 +23,7 @@ import org.springframework.transaction.jta.JtaTransactionManager;
  * https://blog.marcnuri.com/spring-data-jpa-eclipselink-configuring-spring-boot-to-use-eclipselink-as-the-jpa-provider/
  * 
  */
-@Configuration
+@Configuration(value = "MyJpaConfig")
 @EnableTransactionManagement
 @EnableJpaRepositories({ "com.home_server.repositories", "com.home_server.main" })
 public class JpaConfig extends JpaBaseConfiguration {
