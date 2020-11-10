@@ -21,6 +21,7 @@ public class ShoppingListController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private List<ShoppingListItemDTO> selectedShoppingList = new ArrayList<ShoppingListItemDTO>();
+	private int filter;
 
 	@PostConstruct
 	public void init() {
@@ -38,4 +39,28 @@ public class ShoppingListController implements Serializable {
 	public void setSelectedShoppingList(List<ShoppingListItemDTO> selectedShoppingList) {
 		this.selectedShoppingList = selectedShoppingList;
 	}
+
+	public void saveShoppingList() {
+		for (ShoppingListItemDTO shoppingListItemDTO : selectedShoppingList) {
+			shoppingListDTOService.createShoppingListItem(shoppingListItemDTO);
+		}
+		selectedShoppingList = shoppingListDTOService.getAllShoppingListItems();
+	}
+
+	public void addShoppingListItem() {
+		selectedShoppingList.add(new ShoppingListItemDTO());
+	}
+
+	public void filterChange() {
+		int i = 0;
+	}
+
+	public int getFilter() {
+		return filter;
+	}
+
+	public void setFilter(int filter) {
+		this.filter = filter;
+	}
+
 }
