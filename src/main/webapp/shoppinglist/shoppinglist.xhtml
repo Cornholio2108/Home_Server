@@ -51,101 +51,144 @@ html, body, h1, h2, h3, h4, h5 {
 		<h1 style="text-align: center;">
 			<ui:insert name="title">Willkommen zu #{msg['application.title']}</ui:insert>
 		</h1>
-		<h:form id="form" style="margin-top: 50px;">
+		<h:form id="formShoppingList" style="margin-top: 50px;">
 			<p:growl id="msgs" showDetail="true" />
-			<p:panel style="display: block; width: fit-content; margin: 0 auto;">
-				<p:dataTable id="shoppingListItemTable"
-					widgetVar="shoppingListItemTable" var="shoppingListItem"
-					value="#{shoppingListController.selectedShoppingList}"
-					editable="true" editMode="cell" selectionMode="single"
-					selection="#{shoppingListItemController.selectedShoppingListItem}"
-					rowKey="#{shoppingListItem.itemID}">
-					<p:ajax event="cellEdit"
-						listener="#{shoppingListItemController.onCellEdit}"
-						update=":form:msgs" />
-					<!-- 					<p:ajax event="rowSelect" -->
-					<!-- 						listener="#{shoppingListItemController.onRowSelect}" /> -->
-					<!-- 					<p:ajax event="rowUnselect" -->
-					<!-- 						listener="#{shoppingListItemController.onRowUnselect}" /> -->
-					<p:column headerText="ID">
-						<h:outputText value="#{shoppingListItem.itemID}" />
+			<!-- 			<p:panel style="display: block; width: fit-content; margin: 0 auto;"> -->
+			<!-- 				<p:dataTable id="shoppingListItemTable" -->
+			<!-- 					widgetVar="shoppingListItemTable" var="shoppingListItem" -->
+			<!-- 					value="#{shoppingListController.selectedShoppingList}" -->
+			<!-- 					editable="true" editMode="cell" selectionMode="single" -->
+			<!-- 					selection="#{shoppingListItemController.selectedShoppingListItem}" -->
+			<!-- 					rowKey="#{shoppingListItem.itemID}"> -->
+			<!-- 					<p:ajax event="cellEdit" -->
+			<!-- 						listener="#{shoppingListItemController.onCellEdit}" -->
+			<!-- 						update=":form:msgs" /> -->
+			<!-- 										<p:ajax event="rowSelect" -->
+			<!-- 											listener="#{shoppingListItemController.onRowSelect}" /> -->
+			<!-- 										<p:ajax event="rowUnselect" -->
+			<!-- 											listener="#{shoppingListItemController.onRowUnselect}" /> -->
+			<!-- 					<p:column headerText="ID"> -->
+			<!-- 						<h:outputText value="#{shoppingListItem.itemID}" /> -->
+			<!-- 					</p:column> -->
+			<!-- 					<p:column headerText="Artikel" sortBy="#{shoppingListItem.title}" -->
+			<!-- 						filterBy="#{shoppingListItem.title}"> -->
+			<!-- 						<p:cellEditor> -->
+			<!-- 							<f:facet name="output"> -->
+			<!-- 								<h:outputText value="#{shoppingListItem.title}" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<f:facet name="input"> -->
+			<!-- 								<p:inputText value="#{shoppingListItem.title}" style="width:96%" -->
+			<!-- 									label="Artikel" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 						</p:cellEditor> -->
+			<!-- 					</p:column> -->
+			<!-- 					<p:column headerText="Beschreibung"> -->
+			<!-- 						<p:cellEditor> -->
+			<!-- 							<f:facet name="output"> -->
+			<!-- 								<h:outputText value="#{shoppingListItem.description}" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<f:facet name="input"> -->
+			<!-- 								<p:inputText value="#{shoppingListItem.description}" -->
+			<!-- 									style="width:96%" label="Beschreibung" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 						</p:cellEditor> -->
+			<!-- 					</p:column> -->
+			<!-- 					<p:column headerText="Anzahl"> -->
+			<!-- 						<p:cellEditor> -->
+			<!-- 							<f:facet name="output"> -->
+			<!-- 								<h:outputText value="#{shoppingListItem.quantity}" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<f:facet name="input"> -->
+			<!-- 								<p:inputNumber value="#{shoppingListItem.quantity}" -->
+			<!-- 									style="width:96%" label="Anzahl" minValue="0" decimalPlaces="0" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 						</p:cellEditor> -->
+			<!-- 					</p:column> -->
+			<!-- 					<p:column headerText="Preis"> -->
+			<!-- 						<p:cellEditor> -->
+			<!-- 							<f:facet name="output"> -->
+			<!-- 								<h:outputText value="#{shoppingListItem.price}" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<f:facet name="input"> -->
+			<!-- 								<p:inputNumber value="#{shoppingListItem.price}" -->
+			<!-- 									style="width:96%" label="Preis" minValue="0" decimalPlaces="2" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 						</p:cellEditor> -->
+			<!-- 					</p:column> -->
+			<!-- 					<p:column headerText="Erstelldatum"> -->
+			<!-- 						<h:outputText value="#{shoppingListItem.creationDate}" /> -->
+			<!-- 					</p:column> -->
+			<!-- 					<p:column headerText="Änderungsdatum"> -->
+			<!-- 						<h:outputText value="#{shoppingListItem.modificationDate}" /> -->
+			<!-- 					</p:column> -->
+			<!-- 					<p:column headerText="Erledigt" -->
+			<!-- 						sortBy="#{shoppingListItem.completed}" -->
+			<!-- 						filterBy="#{shoppingListItem.completed}"> -->
+			<!-- 						<f:facet name="filter"> -->
+			<!-- 							<p:selectOneMenu onchange="PF('shoppingListItemTable').filter()" -->
+			<!-- 								styleClass="custom-filter"> -->
+			<!-- 								<f:selectItem itemLabel="Alle" itemValue="#{null}" -->
+			<!-- 									noSelectionOption="true" /> -->
+			<!-- 								<f:selectItem itemLabel="ja" itemValue="#{true}" /> -->
+			<!-- 								<f:selectItem itemLabel="nein" itemValue="#{false}" /> -->
+			<!-- 							</p:selectOneMenu> -->
+			<!-- 						</f:facet> -->
+			<!-- 						<p:cellEditor> -->
+			<!-- 							<f:facet name="output"> -->
+			<!-- 								<p:selectBooleanCheckbox value="#{shoppingListItem.completed}" -->
+			<!-- 									disabled="true" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<f:facet name="input"> -->
+			<!-- 								<p:selectBooleanCheckbox value="#{shoppingListItem.completed}" -->
+			<!-- 									disabled="false" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 						</p:cellEditor> -->
+			<!-- 					</p:column> -->
+			<!-- 				</p:dataTable> -->
+			<!-- 			</p:panel> -->
+			<p:panelGrid id="panelShoppingList">
+				<ui:repeat var="shoppingListItem"
+					value="#{shoppingListController.selectedShoppingList}">
+					<p:row
+						rendered="#{shoppingListController.filter eq 0 
+						or (shoppingListController.filter eq 1 and not shoppingListItem.completed)
+						or (shoppingListController.filter eq 2 and shoppingListItem.completed)}">
+						<p:column>
+							<p:inputNumber value="#{shoppingListItem.quantity}"
+								style="width:96%" label="Anzahl" minValue="0" decimalPlaces="0" />
+						</p:column>
+						<p:column>
+							<p:inputText value="#{shoppingListItem.title}" style="width:96%"
+								label="Artikel" />
+						</p:column>
+						<p:column>
+							<p:selectBooleanCheckbox value="#{shoppingListItem.completed}" />
+						</p:column>
+					</p:row>
+				</ui:repeat>
+				<p:row>
+					<p:column>
+						<p:commandButton value="+"
+							action="#{shoppingListController.addShoppingListItem}"
+							update="formShoppingList:panelShoppingList" />
 					</p:column>
-					<p:column headerText="Artikel" sortBy="#{shoppingListItem.title}"
-						filterBy="#{shoppingListItem.title}">
-						<p:cellEditor>
-							<f:facet name="output">
-								<h:outputText value="#{shoppingListItem.title}" />
-							</f:facet>
-							<f:facet name="input">
-								<p:inputText value="#{shoppingListItem.title}" style="width:96%"
-									label="Artikel" />
-							</f:facet>
-						</p:cellEditor>
+					<p:column>
+						<p:selectOneMenu value="#{shoppingListController.filter}">
+							<f:selectItem itemLabel="Alle" itemValue="#{0}"
+								noSelectionOption="false" />
+							<f:selectItem itemLabel="offen" itemValue="#{1}" />
+							<f:selectItem itemLabel="gekauft" itemValue="#{2}" />
+							<p:ajax listener="#{shoppingListController.filterChange}"
+								update="formShoppingList:panelShoppingList" />
+						</p:selectOneMenu>
 					</p:column>
-					<p:column headerText="Beschreibung">
-						<p:cellEditor>
-							<f:facet name="output">
-								<h:outputText value="#{shoppingListItem.description}" />
-							</f:facet>
-							<f:facet name="input">
-								<p:inputText value="#{shoppingListItem.description}"
-									style="width:96%" label="Beschreibung" />
-							</f:facet>
-						</p:cellEditor>
+					<p:column>
+						<p:commandButton value="Speichern"
+							action="#{shoppingListController.saveShoppingList}"
+							update="formShoppingList:panelShoppingList" />
 					</p:column>
-					<p:column headerText="Anzahl">
-						<p:cellEditor>
-							<f:facet name="output">
-								<h:outputText value="#{shoppingListItem.quantity}" />
-							</f:facet>
-							<f:facet name="input">
-								<p:inputNumber value="#{shoppingListItem.quantity}"
-									style="width:96%" label="Anzahl" minValue="0" decimalPlaces="0" />
-							</f:facet>
-						</p:cellEditor>
-					</p:column>
-					<p:column headerText="Preis">
-						<p:cellEditor>
-							<f:facet name="output">
-								<h:outputText value="#{shoppingListItem.price}" />
-							</f:facet>
-							<f:facet name="input">
-								<p:inputNumber value="#{shoppingListItem.price}"
-									style="width:96%" label="Preis" minValue="0" decimalPlaces="2" />
-							</f:facet>
-						</p:cellEditor>
-					</p:column>
-					<p:column headerText="Erstelldatum">
-						<h:outputText value="#{shoppingListItem.creationDate}" />
-					</p:column>
-					<p:column headerText="Änderungsdatum">
-						<h:outputText value="#{shoppingListItem.modificationDate}" />
-					</p:column>
-					<p:column headerText="Erledigt"
-						sortBy="#{shoppingListItem.completed}"
-						filterBy="#{shoppingListItem.completed}">
-						<f:facet name="filter">
-							<p:selectOneMenu onchange="PF('shoppingListItemTable').filter()"
-								styleClass="custom-filter">
-								<f:selectItem itemLabel="Alle" itemValue="#{null}"
-									noSelectionOption="true" />
-								<f:selectItem itemLabel="ja" itemValue="#{true}" />
-								<f:selectItem itemLabel="nein" itemValue="#{false}" />
-							</p:selectOneMenu>
-						</f:facet>
-						<p:cellEditor>
-							<f:facet name="output">
-								<p:selectBooleanCheckbox value="#{shoppingListItem.completed}"
-									disabled="true" />
-							</f:facet>
-							<f:facet name="input">
-								<p:selectBooleanCheckbox value="#{shoppingListItem.completed}"
-									disabled="false" />
-							</f:facet>
-						</p:cellEditor>
-					</p:column>
-				</p:dataTable>
-			</p:panel>
+				</p:row>
+			</p:panelGrid>
 		</h:form>
 	</h:body>
 </ui:composition>
