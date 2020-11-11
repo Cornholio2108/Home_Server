@@ -24,10 +24,12 @@ com\home_server\domain\shoppinglist\ShoppingListItem.class
 com\home_server\DataInitializer.class
 com\home_server\ui\weather\WeatherController.class
 com\home_server\rest\shoppinglist\ShoppingListRestController.class
+com\home_server\ui\media\RadioController.class
 com\home_server\domain\weather\WeatherData.class
 com\home_server\Constants.class
 com\home_server\servlet\ThumbnailServletHandler.class
 com\home_server\application\user\UserService.class
+com\home_server\ui\media\NASController.class
 com\home_server\domain\BaseEntity.class
 com\home_server\domain\weather\WeatherData$Coord.class
 com\home_server\rest\main\MainRestController.class

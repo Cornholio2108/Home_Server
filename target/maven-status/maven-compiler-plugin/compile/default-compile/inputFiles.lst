@@ -24,6 +24,7 @@ C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\ui\shopp
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\boundary\shoppinglist\ShoppingListItemDTO.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\media\NetworkFileHandler.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\ViewScopeCallbackRegister.java
+C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\ui\media\RadioController.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\boundary\BaseAssembler.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\repositories\settings\SettingsRepository.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\ui\shoppinglist\ShoppingListController.java
@@ -41,5 +42,6 @@ C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\applicat
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\application\user\UserService.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\domain\settings\AppSettings.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\ui\settings\SettingsController.java
+C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\ui\media\NASController.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\JpaConfig.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\domain\BaseEntity.java

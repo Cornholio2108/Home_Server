@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -45,6 +47,8 @@ public class ShoppingListController implements Serializable {
 			shoppingListDTOService.createShoppingListItem(shoppingListItemDTO);
 		}
 		selectedShoppingList = shoppingListDTOService.getAllShoppingListItems();
+		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Speichern erfolgreich!", "Einkaufsliste erfolgreich gespeichert.");
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
 	public void addShoppingListItem() {
