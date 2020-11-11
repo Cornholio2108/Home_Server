@@ -26,15 +26,55 @@
 		<!-- 		<h1 style="text-align: center;"> -->
 		<!-- 			<ui:insert name="title">Willkommen zu #{msg['application.title']}</ui:insert> -->
 		<!-- 		</h1> -->
-		<h:form style="margin-top: 25px;">
+		<h:form style="margin-top: 25px;" id="mainForm">
 			<p:clock displayMode="analog" />
-			<p:graphicImage class="marginauto" style="margin-top: 50px;"
-				url="https://openweathermap.org/img/w/#{weatherController.image}"
-				alt="Bild #{weatherController.image}"
-				title="#{weatherController.image}"
-				rendered="#{not empty weatherController.image}" />
-			<p:outputLabel value="#{weatherController.weatherOutput}"
-				style="display: block; width:100%; text-align:center;" />
+			<p:panelGrid styleClass="ui-noborder" id="weatherPanel"
+				style=" width: fit-content; margin: 0 auto; margin-top: 50px;">
+				<p:row style="text-align:center;">
+					<p:column>
+						<p:graphicImage class="marginauto" style="margin-top: 50px;"
+							url="https://openweathermap.org/img/w/#{weatherController.image}"
+							alt="Bild #{weatherController.image}"
+							title="#{weatherController.image}"
+							rendered="#{not empty weatherController.image}" />
+					</p:column>
+					<p:column>
+						<p:graphicImage class="marginauto" style="margin-top: 50px;"
+							url="https://openweathermap.org/img/w/#{weatherController.image2h}"
+							alt="Bild #{weatherController.image2h}"
+							title="#{weatherController.image2h}"
+							rendered="#{not empty weatherController.image2h}" />
+					</p:column>
+					<p:column>
+						<p:graphicImage class="marginauto" style="margin-top: 50px;"
+							url="https://openweathermap.org/img/w/#{weatherController.image4h}"
+							alt="Bild #{weatherController.image4h}"
+							title="#{weatherController.image4h}"
+							rendered="#{not empty weatherController.image4h}" />
+					</p:column>
+				</p:row>
+				<p:row style="text-align:center;">
+					<p:column>
+						<p:outputLabel value="#{weatherController.weatherOutput}"
+							style="display: block; width:100%; text-align:center;" />
+					</p:column>
+					<p:column>
+						<p:outputLabel value="#{weatherController.weatherOutput2h}"
+							style="display: block; width:100%; text-align:center;" />
+					</p:column>
+					<p:column>
+						<p:outputLabel value="#{weatherController.weatherOutput4h}"
+							style="display: block; width:100%; text-align:center;" />
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+			<!-- 			<p:graphicImage class="marginauto" style="margin-top: 50px;" -->
+			<!-- 				url="https://openweathermap.org/img/w/#{weatherController.image}" -->
+			<!-- 				alt="Bild #{weatherController.image}" -->
+			<!-- 				title="#{weatherController.image}" -->
+			<!-- 				rendered="#{not empty weatherController.image}" /> -->
+			<!-- 			<p:outputLabel value="#{weatherController.weatherOutput}" -->
+			<!-- 				style="display: block; width:100%; text-align:center;" /> -->
 			<p:panelGrid styleClass="ui-noborder"
 				style=" width: fit-content; margin: 0 auto; margin-top: 50px;">
 				<p:row style="text-align:center;">
