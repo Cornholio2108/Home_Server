@@ -1,7 +1,7 @@
 package com.home_server.pi;
 
 public class WebRadioPlayer {
-	private String url;
+	private String url="http://streams.ffh.de/radioffh/mp3/hqlivestream.m3u";
 
 	public void start() {
 		try {
