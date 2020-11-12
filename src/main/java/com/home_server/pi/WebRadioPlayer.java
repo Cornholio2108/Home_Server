@@ -6,6 +6,7 @@ public class WebRadioPlayer {
 	public void start() {
 		try {
 			String[] cmd = { "sh", "-c", "mplayer '" + url + "' >/dev/null 2>&1" };
+			//mplayer -playlist playlist.m3u </dev/null >/dev/null 2>&1 &
 			Runtime.getRuntime().exec(cmd);
 
 		} catch (Exception e) {
