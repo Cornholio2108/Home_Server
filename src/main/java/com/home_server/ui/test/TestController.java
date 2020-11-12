@@ -17,24 +17,28 @@ import com.home_server.Globals;
 import com.home_server.application.settings.SettingsService;
 import com.home_server.media.NASFile;
 import com.home_server.media.NetworkFileHandler;
+import com.home_server.pi.WebRadioPlayer;
 
 @Component
 @Scope("view")
 public class TestController implements Serializable {
-	NetworkFileHandler networkFileHandler = new NetworkFileHandler();
-	List<NASFile> fileList = new ArrayList<NASFile>();
-	NASFile selectedFile = new NASFile();
+	private String testString = "";
 
 	@PostConstruct
 	public void init() {
-		networkFileHandler = new NetworkFileHandler();
-		fileList = (List<NASFile>) networkFileHandler.loadFiles("");
 	}
 
 	@Resource
 	private SettingsService settingsService;
 
-	public void test() throws IOException {
+	public void test() {
+		System.out.println("Start Test Click: " + testString);
+		WebRadioPlayer webRadioPlayer = new WebRadioPlayer();
+		webRadioPlayer.startTest(testString);
+		System.out.println("End Test Click: " + testString);
+	}
+
+	public void test2() throws IOException {
 //		FacesContext fcontext = FacesContext.getCurrentInstance();
 //		fcontext.getExternalContext().redirect("/home/users.xhtml");
 //		fileList = networkFileHandler.loadFiles("");
@@ -55,24 +59,12 @@ public class TestController implements Serializable {
 				+ Globals.appSettings.getWeatherSettings().getCountry());
 	}
 
-	public void onRowSelect(SelectEvent<NASFile> event) {
-		fileList = networkFileHandler.loadFiles(selectedFile.getFileName() + "\\");
+	public String getTestString() {
+		return testString;
 	}
 
-	public List<NASFile> getFileList() {
-		return fileList;
+	public void setTestString(String testString) {
+		this.testString = testString;
 	}
 
-	public void setFileList(List<NASFile> fileList) {
-		this.fileList = fileList;
-	}
-
-	public NASFile getSelectedFile() {
-		return selectedFile;
-	}
-
-	public void setSelectedFile(NASFile selectedFile) {
-		this.selectedFile = selectedFile;
-	}
-	
 }

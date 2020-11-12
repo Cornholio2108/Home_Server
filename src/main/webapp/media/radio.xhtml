@@ -22,19 +22,73 @@ html, body, h1, h2, h3, h4, h5 {
 		<h1 style="text-align: center;">
 			<ui:insert name="title">Radio</ui:insert>
 		</h1>
-		<h:form id="form" style="margin-top: 50px;">
+		<h:form id="formRadioStation" style="margin-top: 50px;">
 			<p:growl id="msgs" showDetail="true" />
-			<p:row>
-				<p:column>
-					<p:inputText value="#{radioController.radioURL}" style="width:50%"
-								label="Radio URL" />
-				</p:column>
-			</p:row>
-			<p:row>
-				<p:column>
-					<p:commandButton value="|>" action="#{radioController.play}" />
-				</p:column>
-			</p:row>
+			<p:panelGrid id="panelRadioStation" styleClass="ui-noborder"
+				style="width: 50%; margin: 0 auto; margin-top: 50px;">
+				<p:row style="text-align:center;">
+					<p:column>
+						<p:selectOneMenu id="radioStationSelect"
+							value="#{radioController.selectedRadioStation}"
+							style="width: 75%;">
+							<f:selectItems value="#{radioController.radioStationList}"
+								var="radioStation" itemLabel="#{radioStation.name}"
+								itemValue="#{radioStation}" />
+						</p:selectOneMenu>
+					</p:column>
+					<p:column>
+						<p:commandButton id="editRadioButton" widgetVar="editRadioButton"
+							icon="fa fa-edit" oncomplete="PF('dialog').show()"
+							action="#{radioController.editRadioStation}"
+							update="@widgetVar(dialog)" />
+					</p:column>
+					<p:column>
+						<p:commandButton id="addRadioButton" widgetVar="addRadioButton"
+							icon="fa fa-plus-circle" oncomplete="PF('dialog').show()"
+							action="#{radioController.addRadioStation}"
+							update="@widgetVar(dialog)" />
+					</p:column>
+				</p:row>
+				<p:row style="text-align:center;">
+					<p:column colspan="3">
+						<p:commandButton id="playButton" widgetVar="playButton"
+							icon="fa fa-play-circle-o" action="#{radioController.play}"
+							update="formRadioStation:panelRadioStation" process="@this" />
+					</p:column>
+				</p:row>
+			</p:panelGrid>
 		</h:form>
+		<p:dialog id="dialog" header="dialog" widgetVar="dialog" modal="true">
+			<h:form id="form2">
+				<p:panelGrid>
+					<p:row>
+						<p:column>
+							<p:outputLabel value="Name" />
+						</p:column>
+						<p:column>
+							<p:inputText id="input1"
+								value="#{radioController.selectedRadioStation.name}" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column>
+							<p:outputLabel value="URL" />
+						</p:column>
+						<p:column>
+							<p:inputText id="input2"
+								value="#{radioController.selectedRadioStation.url}" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="2">
+							<p:commandButton id="button2" process="@form"
+								update="formRadioStation:panelRadioStation"
+								action="#{radioController.saveRadioStation}" value="ok"
+								oncomplete="PF('dialog').hide()" />
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+			</h:form>
+		</p:dialog>
 	</h:body>
 </ui:composition>

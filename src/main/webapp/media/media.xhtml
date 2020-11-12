@@ -10,36 +10,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<h:head>
-		<f:facet name="first">
-			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-			<meta name="viewport"
-				content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-			<meta name="apple-mobile-web-app-capable" content="yes" />
-		</f:facet>
 		<title><ui:insert name="title">#{msg['main.media']}</ui:insert></title>
-
-		<!-- *Note: favicon generated and setup instruction taken from https://favicon.io/favicon-generator/ -->
-		<link rel="apple-touch-icon" sizes="180x180"
-			href="#{request.contextPath}/favicon_io/apple-touch-icon.png" />
-		<link rel="icon" type="image/png" sizes="32x32"
-			href="#{request.contextPath}/favicon_io/favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="16x16"
-			href="#{request.contextPath}/favicon_io/favicon-16x16.png" />
-		<link rel="manifest"
-			href="#{request.contextPath}/favicon_io/site.webmanifest" />
-
-		<h:outputStylesheet library="css" name="w3.css" />
-
-		<!-- 
-        	color themes, read from cookie name 'theme-color', if empty, set to default value 'w3-theme-light-blue' 
-        -->
-		<c:set var="theme_color" value="#{cookie['theme.color'].value}" />
-		<c:if test="#{empty theme_color}">
-			<c:set var="theme_color" value="w3-theme-light-blue" />
-		</c:if>
-		<h:outputStylesheet library="css" name="w3-theme/#{theme_color}.css" />
-
 		<style>
 html, body, h1, h2, h3, h4, h5 {
 	font-family: "Open Sans", sans-serif
@@ -47,25 +18,23 @@ html, body, h1, h2, h3, h4, h5 {
 </style>
 	</h:head>
 
-	<h:body class="w3-theme-light" style="margin:0px;">
+	<h:body style="margin:0px;">
 		<h1 style="text-align: center;">
 			<ui:insert name="title">#{msg['main.media']}</ui:insert>
 		</h1>
 		<h:form id="form" style="margin-top: 50px;">
 			<p:growl id="msgs" showDetail="true" />
-			<p:panel style="display: block; width: fit-content; margin: 0 auto;">
-				<p:panelGrid styleClass="ui-noborder">
-					<p:row style="text-align:center;">
-						<p:column>
-							<p:button value="NAS" icon="fa fa-star" outcome="nas.xhtml" />
-						</p:column>
-						<p:column>
-							<p:button value="Radio" icon="fa fa-star"
-								outcome="radio.xhtml" />
-						</p:column>
-					</p:row>
-				</p:panelGrid>
-			</p:panel>
+			<p:panelGrid styleClass="ui-noborder"
+				style="width: 50%; margin: 0 auto; margin-top: 50px;">
+				<p:row style="text-align:center;">
+					<p:column>
+						<p:button value="NAS" icon="fa fa-star" outcome="nas.xhtml" />
+					</p:column>
+					<p:column>
+						<p:button value="Radio" icon="fa fa-star" outcome="radio.xhtml" />
+					</p:column>
+				</p:row>
+			</p:panelGrid>
 		</h:form>
 	</h:body>
 </ui:composition>

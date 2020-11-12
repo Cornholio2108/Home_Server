@@ -16,6 +16,7 @@ com\home_server\boundary\shoppinglist\ShoppingListDTOService.class
 com\home_server\AppConfig.class
 com\home_server\pi\PiGPIOControl.class
 com\home_server\application\shoppinglist\ShoppingListService.class
+com\home_server\domain\media\RadioStation.class
 com\home_server\Globals.class
 com\home_server\WebConfig.class
 com\home_server\ViewScope.class
@@ -29,6 +30,8 @@ com\home_server\domain\weather\WeatherData.class
 com\home_server\Constants.class
 com\home_server\servlet\ThumbnailServletHandler.class
 com\home_server\application\user\UserService.class
+com\home_server\boundary\media\RadioStationDTOService.class
+com\home_server\boundary\media\RadioStationDTO.class
 com\home_server\ui\media\NASController.class
 com\home_server\domain\BaseEntity.class
 com\home_server\domain\weather\WeatherData$Coord.class
@@ -39,8 +42,10 @@ com\home_server\media\NetworkFileHandler.class
 com\home_server\ui\settings\SettingsController.class
 com\home_server\domain\weather\WeatherData$WeatherItem.class
 com\home_server\domain\weather\WeatherData$Weather.class
+com\home_server\boundary\media\RadioStationAssembler.class
 com\home_server\boundary\shoppinglist\ShoppingListItemDTO.class
 com\home_server\ViewScopeCallbackRegister.class
+com\home_server\repositories\media\RadioStationRepository.class
 com\home_server\pi\PiCommands$1$2.class
 com\home_server\pi\PiCommands.class
 com\home_server\security\AppUserDetails.class
@@ -49,6 +54,7 @@ com\home_server\WebSocketConfig.class
 com\home_server\MainApplication.class
 com\home_server\ui\shoppinglist\ShoppingListItemController.class
 com\home_server\ui\picontrols\PiController.class
+com\home_server\application\media\RadioStationService.class
 com\home_server\media\NASFile.class
 com\home_server\ui\test\TestController.class
 com\home_server\boundary\BaseAssembler.class
