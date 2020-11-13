@@ -33,26 +33,56 @@ html, body, h1, h2, h3, h4, h5 {
 							style="width: 75%;">
 							<f:selectItems value="#{radioController.radioStationList}"
 								var="radioStation" itemLabel="#{radioStation.name}"
-								itemValue="#{radioStation}" />
+								itemValue="#{radioStation}" process="@this" />
 						</p:selectOneMenu>
 					</p:column>
-					<p:column>
+					<p:column style="width: 50px;">
 						<p:commandButton id="editRadioButton" widgetVar="editRadioButton"
 							icon="fa fa-edit" oncomplete="PF('dialog').show()"
 							action="#{radioController.editRadioStation}"
-							update="@widgetVar(dialog)" />
+							update="@widgetVar(dialog)" process="@this" />
 					</p:column>
-					<p:column>
+					<p:column style="width: 50px;">
 						<p:commandButton id="addRadioButton" widgetVar="addRadioButton"
 							icon="fa fa-plus-circle" oncomplete="PF('dialog').show()"
 							action="#{radioController.addRadioStation}"
-							update="@widgetVar(dialog)" />
+							update="@widgetVar(dialog)" process="@this" />
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+
+			<p:panelGrid id="panelRadioControl" styleClass="ui-noborder"
+				style="width: 50%; margin: 0 auto; margin-top: 50px;">
+				<p:row style="text-align:center;">
+					<p:column style="width: 50px;">
+						<p:inputNumber value="#{radioController.volume}"
+							label="Lautstärke" minValue="0" maxValue="100" decimalPlaces="0"
+							style="width: 50px;" />
+					</p:column>
+					<p:column style="width: 50px;">
 					</p:column>
 				</p:row>
 				<p:row style="text-align:center;">
-					<p:column colspan="3">
+					<p:column style="width: 50px;">
+						<p:commandButton id="volumeButton" widgetVar="volumeButton"
+							icon="fa fa-volume-up" action="#{radioController.setVolume}"
+							update="formRadioStation:panelRadioStation" process="@this" />
+					</p:column>
+					<p:column style="width: 50px;">
+						<p:commandButton id="muteButton" widgetVar="muteButton"
+							icon="fa fa-volume-off" action="#{radioController.toggleMute}"
+							update="formRadioStation:panelRadioStation" process="@this" />
+					</p:column>
+				</p:row>
+				<p:row style="text-align:center;">
+					<p:column style="width: 50px;">
 						<p:commandButton id="playButton" widgetVar="playButton"
-							icon="fa fa-play-circle-o" action="#{radioController.play}"
+							icon="fa fa-play" action="#{radioController.play}"
+							update="formRadioStation:panelRadioStation" process="@this" />
+					</p:column>
+					<p:column style="width: 50px;">
+						<p:commandButton id="stopButton" widgetVar="stopButton"
+							icon="fa fa-stop" action="#{radioController.stop}"
 							update="formRadioStation:panelRadioStation" process="@this" />
 					</p:column>
 				</p:row>

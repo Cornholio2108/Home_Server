@@ -4,6 +4,7 @@ com\home_server\repositories\settings\SettingsRepository.class
 com\home_server\pi\PiCommands$1.class
 com\home_server\security\AppUserDetailsService.class
 com\home_server\domain\weather\WeatherHandler.class
+com\home_server\pi\TerminalCommand$1$2.class
 com\home_server\ui\shoppinglist\ShoppingListController.class
 com\home_server\boundary\shoppinglist\ShoppingListItemAssembler.class
 com\home_server\JpaConfig.class
@@ -16,6 +17,7 @@ com\home_server\boundary\shoppinglist\ShoppingListDTOService.class
 com\home_server\AppConfig.class
 com\home_server\pi\PiGPIOControl.class
 com\home_server\application\shoppinglist\ShoppingListService.class
+com\home_server\pi\TerminalCommand$1$1.class
 com\home_server\domain\media\RadioStation.class
 com\home_server\Globals.class
 com\home_server\WebConfig.class
@@ -25,6 +27,7 @@ com\home_server\domain\shoppinglist\ShoppingListItem.class
 com\home_server\DataInitializer.class
 com\home_server\ui\weather\WeatherController.class
 com\home_server\rest\shoppinglist\ShoppingListRestController.class
+com\home_server\pi\TerminalCommand$1.class
 com\home_server\ui\media\RadioController.class
 com\home_server\domain\weather\WeatherData.class
 com\home_server\Constants.class
@@ -35,6 +38,7 @@ com\home_server\boundary\media\RadioStationDTO.class
 com\home_server\ui\media\NASController.class
 com\home_server\domain\BaseEntity.class
 com\home_server\domain\weather\WeatherData$Coord.class
+com\home_server\pi\TerminalCommand.class
 com\home_server\rest\main\MainRestController.class
 com\home_server\domain\settings\AppSettings.class
 com\home_server\pi\WebRadioPlayer.class

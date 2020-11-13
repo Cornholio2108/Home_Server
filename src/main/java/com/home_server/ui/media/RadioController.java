@@ -23,6 +23,7 @@ public class RadioController implements Serializable {
 	private WebRadioPlayer webRadioPlayer;
 	private List<RadioStationDTO> radioStationList = new ArrayList<>();
 	private RadioStationDTO selectedRadioStation;
+	private int volume;
 
 	@PostConstruct
 	public void init() {
@@ -34,16 +35,27 @@ public class RadioController implements Serializable {
 	}
 
 	public void play() {
-		webRadioPlayer.setUrl(selectedRadioStation.getUrl());
-		webRadioPlayer.start();
+		webRadioPlayer.start(selectedRadioStation.getUrl());
+	}
+
+	public void stop() {
+		webRadioPlayer.stop();
+	}
+
+	public void setVolume() {
+		webRadioPlayer.setVolume(volume);
+	}
+
+	public void toggleMute() {
+		webRadioPlayer.toggleMute();
 	}
 
 	public void addRadioStation() {
 		selectedRadioStation = new RadioStationDTO();
 	}
-	
+
 	public void editRadioStation() {
-		
+
 	}
 
 	public void saveRadioStation() {
@@ -73,5 +85,13 @@ public class RadioController implements Serializable {
 
 	public void setSelectedRadioStation(RadioStationDTO selectedRadioStation) {
 		this.selectedRadioStation = selectedRadioStation;
+	}
+
+	public int getVolume() {
+		return volume;
+	}
+
+	public void setVolume(int volume) {
+		this.volume = volume;
 	}
 }

@@ -26,13 +26,38 @@ html, body, h1, h2, h3, h4, h5 {
 			<p:growl id="msgs" showDetail="true" />
 
 			<p:panelGrid styleClass="ui-noborder"
-				style="width: 50%; margin: 0 auto; margin-top: 50px;">
+				style="width: 100%; margin: 0 auto; margin-top: 50px;">
 				<p:row>
 					<p:column>
-						<p:inputText value="#{testController.testString}" id="testInput" />
+						<p:inputText value="#{testController.testString1}" id="testInput1"
+							style="width: 100%;" />
 					</p:column>
 				</p:row>
 				<p:row>
+					<p:column>
+						<p:inputText value="#{testController.testString2}" id="testInput2"
+							style="width: 100%;" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:inputText value="#{testController.testString3}" id="testInput3"
+							style="width: 100%;" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:inputText value="#{testController.testString4}" id="testInput4"
+							style="width: 100%;" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:inputText value="#{testController.testString5}" id="testInput5"
+							style="width: 100%;" />
+					</p:column>
+				</p:row>
+				<p:row style="text-align: center;">
 					<p:column>
 						<p:commandButton value="Test" icon="fa fa-gears"
 							actionListener="#{testController.test()}" id="testButton">
