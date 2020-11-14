@@ -15,9 +15,19 @@ public class WebRadioPlayer {
 //	amixer set Headphone unmute
 //	amixer set Headphone toggle
 
-	public void start(String url) {
+	public void startStream(String url) {
 		String[] cmd = { "/bin/bash", "-c", "mplayer -noconsolecontrols -really-quiet -playlist '" + url
 				+ "' </dev/null >/dev/null 2>&1 & disown" };
+		new TerminalCommand().runCmdOnThread(cmd);
+	}
+
+	public void startFile(String url, boolean repeat) {
+		String[] cmd = { "/bin/bash", "-c",
+				"mplayer -noconsolecontrols -really-quiet '" + url + "' </dev/null >/dev/null 2>&1 & disown" };
+		if (repeat) {
+			cmd = new String[] { "/bin/bash", "-c", "mplayer -noconsolecontrols -really-quiet -loop 0 '" + url
+					+ "' </dev/null >/dev/null 2>&1 & disown" };
+		}
 		new TerminalCommand().runCmdOnThread(cmd);
 	}
 

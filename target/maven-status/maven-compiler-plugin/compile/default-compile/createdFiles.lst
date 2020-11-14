@@ -11,6 +11,7 @@ com\home_server\JpaConfig.class
 com\home_server\repositories\shoppinglist\ShoppingListRepository.class
 com\home_server\servlet\AvatarServletHandler.class
 com\home_server\SecurityConfig.class
+com\home_server\ui\media\SelectItemToEntityConverter.class
 com\home_server\application\settings\SettingsService.class
 com\home_server\pi\PiCommands$1$1.class
 com\home_server\boundary\shoppinglist\ShoppingListDTOService.class
@@ -60,6 +61,7 @@ com\home_server\ui\shoppinglist\ShoppingListItemController.class
 com\home_server\ui\picontrols\PiController.class
 com\home_server\application\media\RadioStationService.class
 com\home_server\media\NASFile.class
+com\home_server\rest\media\ImageServlet.class
 com\home_server\ui\test\TestController.class
 com\home_server\boundary\BaseAssembler.class
 com\home_server\domain\weather\WeatherData$Main.class

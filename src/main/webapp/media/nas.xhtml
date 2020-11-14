@@ -27,9 +27,9 @@ html, body, h1, h2, h3, h4, h5 {
 			<p:panel style="display: block; width: fit-content; margin: 0 auto;">
 				<p:dataTable id="fileTable" widgetVar="fileTable" var="fileItem"
 					value="#{NASController.fileList}" selectionMode="single"
-					selection="#{NASController.selectedFile}"
-					rowKey="#{fileItem.path}">
-					<p:ajax event="rowSelect" listener="#{NASController.onRowSelect}" update="@widgetVar(fileTable)" />
+					selection="#{NASController.selectedFile}" rowKey="#{fileItem.path}">
+					<p:ajax event="rowSelect" listener="#{NASController.onRowSelect}"
+						update="@widgetVar(fileTable) @widgetVar(imageDialog)" />
 					<p:column headerText="Datei">
 						<h:outputText value="#{fileItem.fileName}" />
 					</p:column>
@@ -53,5 +53,27 @@ html, body, h1, h2, h3, h4, h5 {
 				</p:dataTable>
 			</p:panel>
 		</h:form>
+		<p:dialog id="imageDialog"
+			header="#{NASController.selectedFile.fileName}"
+			widgetVar="imageDialog" modal="true">
+			<h:form id="form2">
+				<p:panelGrid>
+					<p:row>
+						<p:column>
+							<p:graphicImage class="marginauto"
+								value="/images/#{NASController.selectedFile.fileName}"
+								alt="Bild #{NASController.selectedFile.fileName}"
+								title="#{NASController.selectedFile.fileName}" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column>
+							<p:commandButton id="button2" process="@form" value="ok"
+								oncomplete="PF('imageDialog').hide()" />
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+			</h:form>
+		</p:dialog>
 	</h:body>
 </ui:composition>

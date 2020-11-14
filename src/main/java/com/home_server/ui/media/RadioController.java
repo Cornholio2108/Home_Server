@@ -7,11 +7,13 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
+import org.primefaces.event.SelectEvent;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.home_server.boundary.media.RadioStationDTO;
 import com.home_server.boundary.media.RadioStationDTOService;
+import com.home_server.boundary.shoppinglist.ShoppingListItemDTO;
 import com.home_server.pi.WebRadioPlayer;
 
 @Component
@@ -24,18 +26,29 @@ public class RadioController implements Serializable {
 	private List<RadioStationDTO> radioStationList = new ArrayList<>();
 	private RadioStationDTO selectedRadioStation;
 	private int volume;
+	private boolean repeat = false;
 
 	@PostConstruct
 	public void init() {
 		webRadioPlayer = new WebRadioPlayer();
 		radioStationList = radioStationDTOService.getAllRadioStations();
 		if (radioStationList != null && radioStationList.size() > 0) {
-			selectedRadioStation = radioStationList.get(radioStationList.size() - 1);
+			selectedRadioStation = radioStationList.get(0);
 		}
 	}
 
+	public void onRadioStationChange() {
+		System.out.println("Radio selected: " + selectedRadioStation.getName());
+	}
+
 	public void play() {
-		webRadioPlayer.start(selectedRadioStation.getUrl());
+		if (selectedRadioStation != null) {
+			if (selectedRadioStation.getUrl().contains("home/pi")) {
+				webRadioPlayer.startFile(selectedRadioStation.getUrl(), repeat);
+			} else {
+				webRadioPlayer.startStream(selectedRadioStation.getUrl());
+			}
+		}
 	}
 
 	public void stop() {
@@ -55,12 +68,16 @@ public class RadioController implements Serializable {
 	}
 
 	public void editRadioStation() {
-
+		System.out.println("Radio edit: " + selectedRadioStation.getName());
 	}
 
 	public void saveRadioStation() {
 		radioStationDTOService.createRadioStation(selectedRadioStation);
 		radioStationList = radioStationDTOService.getAllRadioStations();
+	}
+	
+	public void onRowSelect(SelectEvent<RadioStationDTO> event) {
+		selectedRadioStation = event.getObject();
 	}
 
 	public WebRadioPlayer getWebRadioPlayer() {
@@ -94,4 +111,13 @@ public class RadioController implements Serializable {
 	public void setVolume(int volume) {
 		this.volume = volume;
 	}
+
+	public boolean isRepeat() {
+		return repeat;
+	}
+
+	public void setRepeat(boolean repeat) {
+		this.repeat = repeat;
+	}
+
 }

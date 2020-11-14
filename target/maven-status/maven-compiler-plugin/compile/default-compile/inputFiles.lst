@@ -7,6 +7,7 @@ C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\Globals.
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\rest\shoppinglist\ShoppingListRestController.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\application\settings\SettingsService.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\pi\TerminalCommand.java
+C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\rest\media\ImageServlet.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\Constants.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\domain\media\RadioStation.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\WebSocketConfig.java
@@ -47,6 +48,7 @@ C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\boundary
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\ui\picontrols\PiController.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\ui\weather\WeatherController.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\application\shoppinglist\ShoppingListService.java
+C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\ui\media\SelectItemToEntityConverter.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\application\user\UserService.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\domain\settings\AppSettings.java
 C:\Users\chris\StudioProjects\Home_Server\src\main\java\com\home_server\JpaConfig.java

@@ -6,7 +6,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<h:head>
@@ -27,15 +28,6 @@ html, body, h1, h2, h3, h4, h5 {
 			<p:panelGrid id="panelRadioStation" styleClass="ui-noborder"
 				style="width: 50%; margin: 0 auto; margin-top: 50px;">
 				<p:row style="text-align:center;">
-					<p:column>
-						<p:selectOneMenu id="radioStationSelect"
-							value="#{radioController.selectedRadioStation}"
-							style="width: 75%;">
-							<f:selectItems value="#{radioController.radioStationList}"
-								var="radioStation" itemLabel="#{radioStation.name}"
-								itemValue="#{radioStation}" process="@this" />
-						</p:selectOneMenu>
-					</p:column>
 					<p:column style="width: 50px;">
 						<p:commandButton id="editRadioButton" widgetVar="editRadioButton"
 							icon="fa fa-edit" oncomplete="PF('dialog').show()"
@@ -47,6 +39,46 @@ html, body, h1, h2, h3, h4, h5 {
 							icon="fa fa-plus-circle" oncomplete="PF('dialog').show()"
 							action="#{radioController.addRadioStation}"
 							update="@widgetVar(dialog)" process="@this" />
+					</p:column>
+				</p:row>
+				<p:row style="text-align:center;">
+					<p:column colspan="2">
+						<p:dataTable id="radioStationTable" widgetVar="radioStationTable"
+							var="radioItem" value="#{radioController.radioStationList}"
+							selectionMode="single"
+							selection="#{radioController.selectedRadioStation}"
+							rowKey="#{radioItem.id}">
+							<p:ajax event="rowSelect"
+								listener="#{radioController.onRowSelect}" />
+							<p:column headerText="Name">
+								<h:outputText value="#{radioItem.name}" />
+							</p:column>
+							<p:column headerText="Adresse">
+								<h:outputText value="#{radioItem.url}" />
+							</p:column>
+						</p:dataTable>
+						<!-- 					<p:column> -->
+						<!-- 						<p:selectOneMenu id="radioSelection" -->
+						<!-- 							value="#{radioController.selectedRadioStation}"> -->
+						<!-- 							<f:selectItems value="#{radioController.radioStationList}" -->
+						<!-- 								var="radioItem" itemLabel="#{radioItem.name}" -->
+						<!-- 								itemValue="#{radioItem}" /> -->
+						<!-- 							<p:ajax event="change" update="formRadioStation" -->
+						<!-- 								listener="#{radioController.onRadioStationChange}" /> -->
+						<!-- 						</p:selectOneMenu> -->
+						<!-- 					</p:column> -->
+						<!-- 					<p:column style="width: 50px;"> -->
+						<!-- 						<p:commandButton id="editRadioButton" widgetVar="editRadioButton" -->
+						<!-- 							icon="fa fa-edit" oncomplete="PF('dialog').show()" -->
+						<!-- 							action="#{radioController.editRadioStation}" -->
+						<!-- 							update="@widgetVar(dialog)" process="@this" /> -->
+						<!-- 					</p:column> -->
+						<!-- 					<p:column style="width: 50px;"> -->
+						<!-- 						<p:commandButton id="addRadioButton" widgetVar="addRadioButton" -->
+						<!-- 							icon="fa fa-plus-circle" oncomplete="PF('dialog').show()" -->
+						<!-- 							action="#{radioController.addRadioStation}" -->
+						<!-- 							update="@widgetVar(dialog)" process="@this" /> -->
+						<!-- 					</p:column> -->
 					</p:column>
 				</p:row>
 			</p:panelGrid>
@@ -72,6 +104,14 @@ html, body, h1, h2, h3, h4, h5 {
 						<p:commandButton id="muteButton" widgetVar="muteButton"
 							icon="fa fa-volume-off" action="#{radioController.toggleMute}"
 							update="formRadioStation:panelRadioStation" process="@this" />
+					</p:column>
+				</p:row>
+				<p:row style="text-align:center;">
+					<p:column style="width: 50px;">
+						<p:outputLabel value="Repeat" />
+					</p:column>
+					<p:column style="width: 50px;">
+						<p:selectBooleanCheckbox value="#{radioController.repeat}" />
 					</p:column>
 				</p:row>
 				<p:row style="text-align:center;">

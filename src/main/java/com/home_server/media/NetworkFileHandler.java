@@ -6,14 +6,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class NetworkFileHandler {
 	public List<NASFile> loadFiles(String folders) {
 		List<NASFile> fileList = new ArrayList();
-		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get("\\\\SYNOSTATION\\photo\\"+folders))) {
+//		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get("\\\\SYNOSTATION\\photo\\"+folders))) {
+		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get("/media/NAS/photo/"+folders))) {
 			for (Path path : stream) {
 //				if (!Files.isDirectory(path)) {
 //					fileList.add(path.getFileName().toString());

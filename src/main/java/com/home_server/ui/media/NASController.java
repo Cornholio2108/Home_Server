@@ -1,6 +1,5 @@
 package com.home_server.ui.media;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,15 +7,14 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
+import org.primefaces.PrimeFaces;
 import org.primefaces.event.SelectEvent;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.home_server.Globals;
 import com.home_server.application.settings.SettingsService;
 import com.home_server.media.NASFile;
 import com.home_server.media.NetworkFileHandler;
-import com.home_server.pi.WebRadioPlayer;
 
 @Component
 @Scope("view")
@@ -24,7 +22,7 @@ public class NASController implements Serializable {
 	NetworkFileHandler networkFileHandler = new NetworkFileHandler();
 	List<NASFile> fileList = new ArrayList<NASFile>();
 	NASFile selectedFile = new NASFile();
-	
+
 	@Resource
 	private SettingsService settingsService;
 
@@ -33,9 +31,15 @@ public class NASController implements Serializable {
 		networkFileHandler = new NetworkFileHandler();
 		fileList = (List<NASFile>) networkFileHandler.loadFiles("");
 	}
-	
+
 	public void onRowSelect(SelectEvent<NASFile> event) {
-		fileList = networkFileHandler.loadFiles(selectedFile.getFileName() + "\\");
+		System.out.println("File click: "+selectedFile.getPath()+"; "+selectedFile.getFileName()+"; isFolder: "+selectedFile.isFolder());
+		if (selectedFile.isFolder())
+			fileList = networkFileHandler.loadFiles(selectedFile.getFileName() + "\\");
+		else {
+			PrimeFaces current = PrimeFaces.current();
+			current.executeScript("PF('imageDialog').show();");
+		}
 	}
 
 	public NetworkFileHandler getNetworkFileHandler() {
